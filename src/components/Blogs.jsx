@@ -32,6 +32,11 @@ function Blogs() {
           <p>{error}</p>
         ) : (
           <ul className="blogs">
+
+            <li className='addBlogButton'>
+                <Link to={`/addBlog`}>Add Blog</Link>                
+            </li>
+
             {data.map((item) => (
               <li key={item._id}>
                 <Link to={`/blog/${item._id}`}>
