@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./routes/Home/home";
-import About from "./routes/About/about";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Blogs from "./components/Blogs";
-import AddBlog from "./routes/Home/addBlog";
+import Home    from "./routes/Home/home";
+import UpdatePost from "./routes/Home/SinglePost";
+import About   from "./routes/About/about";
+// import AddBlog from "./components/addBlog";
+import AddPicsStLucia from "./components/addPicsStLucia";
+import Header  from "./components/header";
+import Footer  from "./components/footer";
+import StLuciaPics from "./routes/StLucia/stLuciaPics";
 
 function App() {
   return (
@@ -13,7 +15,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/addBlog" element={<AddBlog />} />
+          <Route path="/stLuciaPics" element={<StLuciaPics />} />
+          {/* <Route path="/blogs/:id"       element={<BlogDetails />} /> */}
+          <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
+          <Route path="/singlePost/:id" element={<UpdatePost />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

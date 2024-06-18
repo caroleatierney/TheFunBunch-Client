@@ -24,6 +24,7 @@ function Blogs() {
         }
         fetchData();
     }, []);
+
     return (
       <div>
         {isLoading ? (
@@ -32,22 +33,22 @@ function Blogs() {
           <p>{error}</p>
         ) : (
           <ul className="blogs">
-
-            <li className='addBlogButton'>
-                <Link to={`/addBlog`}>Add Blog</Link>                
+            <li className="addBlogButton">
+              <Link to={`/addBlog`}>Add Blog</Link>
             </li>
-
             {data.map((item) => (
               <li key={item._id}>
                 <Link to={`/blog/${item._id}`}>
                   <h3>{item.title}</h3>
+                  <img src={item.image} alt={item.title} />{" "}
                   <p>
-                    {
-                        item.description.length > 50
-                        ? `${item.description.substring(0,50)}...`
-                        : item.description}
-                    }
+                    {item.description.length > 50
+                      ? `${item.description.substring(0, 50)}...`
+                      : item.description}
                   </p>
+                  <li className="addBlogButton">
+                    <Link to={`/addBlog`}>Add Blog</Link>
+                  </li>
                 </Link>
               </li>
             ))}
