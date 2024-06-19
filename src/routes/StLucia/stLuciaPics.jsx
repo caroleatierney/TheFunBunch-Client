@@ -41,7 +41,7 @@ function StLuciaPics() {
             </li>
             {data.map((item) => (
               <li key={item._id}>
-                <Link to={`/blog/${item._id}`}>
+                <Link to={`/ViewUpdatePost/${item._id}`}>
                   <h3>{item.title}</h3>
                   <img src={item.image} alt={item.title} />{" "}
                   <p>

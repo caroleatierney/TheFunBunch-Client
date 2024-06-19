@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home    from "./routes/Home/home";
-import UpdatePost from "./routes/Home/SinglePost";
+import ViewUpdatePost from "./routes/Home/ViewUpdatePost";
 import About   from "./routes/About/about";
 // import AddBlog from "./components/addBlog";
 import AddPicsStLucia from "./components/addPicsStLucia";
@@ -16,9 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stLuciaPics" element={<StLuciaPics />} />
-          {/* <Route path="/blogs/:id"       element={<BlogDetails />} /> */}
+          {/* <Route path="/blog/:id"       element={<ViewUpdatePost />} /> */}
           <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
-          <Route path="/singlePost/:id" element={<UpdatePost />} />
+          <Route path="/viewUpdatePost/:id" element={<ViewUpdatePost />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

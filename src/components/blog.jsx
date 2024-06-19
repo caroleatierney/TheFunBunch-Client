@@ -1,4 +1,4 @@
-// This will be an individual post
+// junk???// This will be an individual post to display when the image is clicked on
 import React, { Component } from "react";
 
 import Posts from "./Posts";
