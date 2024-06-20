@@ -1,3 +1,4 @@
+// Displays all of the pictures from St. Lucia
 import React, {useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
@@ -35,24 +36,25 @@ function StLuciaPics() {
         ) : error ? (
           <p>{error}</p>
         ) : (
-          <ul className="blogs">
-            <li className="addBlogButton">
-              <Link to={`/addPicsStLucia`}>Add new picture</Link>
-            </li>
-            {data.map((item) => (
-              <li key={item._id}>
-                <Link to={`/ViewUpdatePost/${item._id}`}>
-                  <h3>{item.title}</h3>
-                  <img src={item.image} alt={item.title} />{" "}
-                  <p>
-                    {item.description.length > 50
-                      ? `${item.description.substring(0, 50)}...`
-                      : item.description}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <>
+            <Link to={`/addPicsStLucia`}>Add new picture</Link>
+            <ul className="blogs">
+              {data.map((item) => (
+                <li key={item._id}>
+                  <Link to={`/ViewUpdatePost/${item._id}`}>
+                    <h3>{item.title}</h3>
+                    <img src={item.image} alt={item.title} />
+                    <p>
+                      {item.description.length > 50
+                        ? `${item.description.substring(0, 50)}...`
+                        : item.description}
+                    </p>
+                    <div>Date Added: {item.date}</div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </div>
     );

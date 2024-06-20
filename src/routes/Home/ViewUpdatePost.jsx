@@ -2,12 +2,39 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ViewUpdatePost() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs`;
-  const [newPicName, setNewPicName] = useState("");
-  const [newImageUrl, setNewImageUrl] = useState("");
-  const [newPicDate] = useState(getDate());
-  // const [newPicDate] = useState("11/30/2024");
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`;
+  const [picName, setPicName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [picDate] = useState(getDate());
+  const [fetchedDate, setFetchedDate] = useState("");
+  const [desc, setDesc] = useState("");
+  const [blogArray] = useState([]); 
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(baseUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        setPicName(data.title);
+        setImageUrl(data.image);
+        setFetchedDate(data.date);;
+        setDesc(data.description);
+        setIsLoading(false);
+      } catch (error) {
+        setError("Error fetching data," + error.message);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   function getDate() {
     const today = new Date();
@@ -17,25 +44,23 @@ function ViewUpdatePost() {
     return `${month}/${date}/${year}`;
   }
 
-  const addPic = async (e) => {
+  const updatePost = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch(baseUrl, {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title: newPicName,
-          image: newImageUrl,
-          date: newPicDate,
+          title: picName,
+          image: imageUrl,
+          date: picDate,
+          description: desc,
+          blogArray: blogArray,
         }),
       });
 
       if (response.ok) {
-        // set form fields to blank after update
-        setNewPicName("");
-        setNewImageUrl("");
-        setNewPicDate("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
       } else {
@@ -45,41 +70,69 @@ function ViewUpdatePost() {
       console.log(error);
     }
   };
+  const removePost = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(baseUrl, {
+        method: "DELETE"
+      });
+      if(response.ok) {
+        navigate('/stLuciaPics');
+      }
+    } catch (error) {     
+    }
+  }
 
   // display form
   return (
     <div>
-      <Link to="/stLuciaPics" className="back-button">
-        Back
-      </Link>
+      <div className="breadcrump-nav">
+        <Link to="/" className="back-button">
+          👈 back
+        </Link>
+
+        <button onClick={removePost} className="delete">
+          ❌ Remove
+        </button>
+      </div>
 
       <div>
-        Add a new Memory
-        <form onSubmit={addPic}>
+        View and Update
+        <form onSubmit={updatePost}>
           <label htmlFor="title">Title of Image</label>
           <input
             type="text"
-            onChange={(e) => setNewPicName(e.target.value)}
-            value={newPicName}
+            onChange={(e) => setPicName(e.target.value)}
+            value={picName}
             required
           />
-
+          <label htmlFor="date">Date Added</label>
+          <div>{fetchedDate}</div>
           <label htmlFor="Image">Image from Imgur</label>
+          <img src={imageUrl} alt={picName} />
           <input
             type="text"
-            onChange={(e) => setNewImageUrl(e.target.value)}
-            value={newImageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            value={imageUrl}
+            required
+          />
+          <label htmlFor="Description">Description</label>
+          <input
+            type="text"
+            onChange={(e) => setDesc(e.target.value)}
+            value={desc}
             required
           />
           <input
             type="submit"
-            value={submitted ? "Saving note..." : "💾 Save Note"}
+            value={submitted ? "Saving note..." : "💾 Save Updates"}
             disabled={submitted}
           />
 
           <p className="text-center">
             {submitted && (
-              <div className="success-message">Note has been added!</div>
+              <div className="success-message">Note has been updated!</div>
             )}
           </p>
         </form>

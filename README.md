@@ -10,3 +10,8 @@ Currently, two official plugins are available:
 
 Client - npm run dev
 Server - nodemon
+
+TO DO:
+add the blog part
+add another field to manually add a date and display that instead?
+styling with Tailwind
