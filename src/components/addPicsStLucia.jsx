@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 function AddPicsStLucia() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs`;
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
   const [newPicName, setNewPicName] = useState("");
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newPicDate] = useState(getDate());

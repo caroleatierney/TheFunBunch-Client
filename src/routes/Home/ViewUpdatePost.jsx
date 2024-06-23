@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 function ViewUpdatePost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`;
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [picDate] = useState(getDate());
@@ -88,7 +88,7 @@ function ViewUpdatePost() {
   return (
     <div>
       <div className="breadcrump-nav">
-        <Link to="/" className="back-button">
+        <Link to="/stLuciaPics" className="back-button">
           👈 back
         </Link>
 

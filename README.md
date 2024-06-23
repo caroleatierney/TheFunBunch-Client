@@ -12,6 +12,8 @@ Client - npm run dev
 Server - nodemon
 
 TO DO:
-add the blog part
-add another field to manually add a date and display that instead?
-styling with Tailwind
+1) Deploy on Render!
+2) add the blog part
+3) add another field to manually add a date and display that instead?
+4) styling with Tailwind
+5) add a Sal page with a link to the video and picture of sign

@@ -3,7 +3,8 @@ import React, {useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
 function StLuciaPics() {
-    const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs`;
+    // const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs`;
+    const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
     
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
