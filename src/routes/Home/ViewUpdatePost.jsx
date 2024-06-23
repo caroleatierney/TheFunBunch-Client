@@ -63,6 +63,7 @@ function ViewUpdatePost() {
       if (response.ok) {
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
+        navigate("/stLuciaPics");
       } else {
         console.log("Failed to submit data.");
       }
