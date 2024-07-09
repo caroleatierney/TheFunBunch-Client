@@ -46,7 +46,12 @@ function StLuciaPics() {
                 <li key={item._id}>
                   <Link to={`/ViewUpdatePost/${item._id}`}>
                     <h3 className="bg-red-100">{item.title}</h3>
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={item.image}
+                      alt={item.title}
+                    />
+                    {/* <img src={item.image} alt={item.title} /> */}
                     <p>
                       {item.description.length > 50
                         ? `${item.description.substring(0, 50)}...`

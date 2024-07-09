@@ -1,8 +1,10 @@
 # The Fun Bunch - Client
 
-Client - npm run dev
-Client - npx tailwindcss -i ./tailwind.css -o ./dist/output.css --watch
-Server - nodemon
+To start Client - npm run dev
+To start Server - nodemon
+
+To update the dist folder on Client: npx tailwindcss -i .src/index.css -o ./dist/output.css --watch
+
 
 TO DO:
 

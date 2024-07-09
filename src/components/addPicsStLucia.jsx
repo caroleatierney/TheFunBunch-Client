@@ -7,17 +7,17 @@ function AddPicsStLucia() {
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newPicDate] = useState(getDate());
   const [newDesc, setNewDesc] = useState("");
-  const [newBlogArray] = useState([]); 
+  const [newBlogArray] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
   function getDate() {
-      const today = new Date();
-      const month = today.getMonth() + 1;
-      const year = today.getFullYear();
-      const date = today.getDate();
-      return `${month}/${date}/${year}`;
-  };
-
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    return `${month}/${date}/${year}`;
+  }
+  
   const addPic = async (e) => {
     e.preventDefault();
 
@@ -67,6 +67,14 @@ function AddPicsStLucia() {
             value={newPicName}
             required
           />
+          {/* 
+          <label htmlFor="Image">Date taken</label>
+          <input
+            type="text"
+            onChange={(e) => setNewPicDate(e.target.value)}
+            value={newPicDate}
+            required
+          /> */}
 
           <label htmlFor="Image">Image from Imgur</label>
           <input
@@ -75,6 +83,7 @@ function AddPicsStLucia() {
             value={newImageUrl}
             required
           />
+
           <label htmlFor="Description">Description</label>
           <input
             type="text"

@@ -89,11 +89,11 @@ function ViewUpdatePost() {
   return (
     <div>
       <div className="breadcrump-nav">
-        <Link to="/stLuciaPics" className="back-button">
+        <Link to="/stLuciaPics" className="back-button color: bg-pink-200">
           👈 back
         </Link>
 
-        <button onClick={removePost} className="delete">
+        <button onClick={removePost} className="delete color: bg-blue-200">
           ❌ Remove
         </button>
       </div>
