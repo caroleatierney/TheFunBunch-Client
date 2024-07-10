@@ -17,16 +17,16 @@ function App() {
             className="min-h-screen bg-cover bg-center"
             style={{ backgroundImage: `url(${BackgroundImage})` }}
         >
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/stLuciaPics" element={<StLuciaPics />} />
-          {/* <Route path="/blog/:id"       element={<ViewUpdatePost />} /> */}
-          <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
-          <Route path="/viewUpdatePost/:id" element={<ViewUpdatePost />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <Footer />
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/stLuciaPics" element={<StLuciaPics />} />
+            {/* <Route path="/blog/:id"       element={<ViewUpdatePost />} /> */}
+            <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
+            <Route path="/viewUpdatePost/:id" element={<ViewUpdatePost />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+          <Footer />
         </div>
       </Router>
     

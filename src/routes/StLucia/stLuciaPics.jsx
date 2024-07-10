@@ -1,9 +1,9 @@
 // Displays all of the pictures from St. Lucia
-import React, {useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Carousel, Button } from "flowbite-react";
 
 function StLuciaPics() {
-    // const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/blogs`;
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
     
     const [data, setData] = useState([]);
@@ -29,40 +29,40 @@ function StLuciaPics() {
     }, []);
 
     return (
-      // Returns all notes
-      <div className="bg-red-100">
+      // Returns all images
+      <div>
         {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
         {isLoading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
         ) : (
-          <>
-            <Link to={`/addPicsStLucia`} className="bg-red-100">
-              Add new picture
-            </Link>
-            <ul>
-              {data.map((item) => (
-                <li key={item._id}>
-                  <Link to={`/ViewUpdatePost/${item._id}`}>
-                    <h3 className="bg-red-100">{item.title}</h3>
+          // <div>
+
+          <div>
+            <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+              <Carousel pauseOnHover className="w-3/4 h-full mx-auto">
+                {data.map((item) => (
+                  <NavLink key={item._id} to={`/ViewUpdatePost/${item._id}`}>
+                    <h3>{item.title}</h3>
                     <img
-                      className="h-10 w-10 rounded-full"
+                      className="max-w-full max-h-full object-contain"
                       src={item.image}
                       alt={item.title}
                     />
-                    {/* <img src={item.image} alt={item.title} /> */}
-                    <p>
-                      {item.description.length > 50
-                        ? `${item.description.substring(0, 50)}...`
-                        : item.description}
-                    </p>
-                    <div>Date Added: {item.date}</div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </>
+                  </NavLink>
+                ))}
+              </Carousel>
+            </div>
+
+            <div className="flex justify-center">
+              <NavLink to="/addPicsStLucia">
+                <Button className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+                  Add new picture
+                </Button>
+              </NavLink>
+            </div>
+          </div>
         )}
       </div>
     );
