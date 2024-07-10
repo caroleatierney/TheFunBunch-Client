@@ -21,4 +21,4 @@ TO DO:
 4) add another field to manually add a date and display that instead?
 5) styling with Tailwind
 6) add a Sal page with a link to the video and picture of sign only if you can make it private
-7) rename repositories to TheFunBunch
+7) rename repositories to TheFunBunch - test this works and delete
