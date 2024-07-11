@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { Button } from "flowbite-react";
 
 function ViewUpdatePost() {
   const { id } = useParams();
@@ -10,7 +12,7 @@ function ViewUpdatePost() {
   const [picDate] = useState(getDate());
   const [fetchedDate, setFetchedDate] = useState("");
   const [desc, setDesc] = useState("");
-  const [blogArray] = useState([]); 
+  const [blogArray] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,7 +27,7 @@ function ViewUpdatePost() {
         const data = await response.json();
         setPicName(data.title);
         setImageUrl(data.image);
-        setFetchedDate(data.date);;
+        setFetchedDate(data.date);
         setDesc(data.description);
         setIsLoading(false);
       } catch (error) {
@@ -76,70 +78,94 @@ function ViewUpdatePost() {
 
     try {
       const response = await fetch(baseUrl, {
-        method: "DELETE"
+        method: "DELETE",
       });
-      if(response.ok) {
-        navigate('/stLuciaPics');
+      if (response.ok) {
+        navigate("/stLuciaPics");
       }
-    } catch (error) {     
-    }
-  }
+    } catch (error) {}
+  };
 
   // display form
   return (
     <div>
-      <div className="breadcrump-nav">
-        <Link to="/stLuciaPics" className="back-button color: bg-pink-200">
-          👈 back
-        </Link>
-
-        <button onClick={removePost} className="delete color: bg-blue-200">
-          ❌ Remove
-        </button>
-      </div>
-
       <div>
-        View and Update
-        <form onSubmit={updatePost}>
-          <label htmlFor="title">Title of Image</label>
-          <input
-            type="text"
-            onChange={(e) => setPicName(e.target.value)}
-            value={picName}
-            required
-          />
-          <label htmlFor="date">Date Added</label>
-          <div>{fetchedDate}</div>
-          <label htmlFor="Image">Image from Imgur</label>
-          <img src={imageUrl} alt={picName} />
-          <input
-            type="text"
-            onChange={(e) => setImageUrl(e.target.value)}
-            value={imageUrl}
-            required
-          />
-          <label htmlFor="Description">Description</label>
-          <input
-            type="text"
-            onChange={(e) => setDesc(e.target.value)}
-            value={desc}
-            required
-          />
-          <input
-            type="submit"
-            value={submitted ? "Saving note..." : "💾 Save Updates"}
-            disabled={submitted}
-          />
+        <form className="flex flex-col justify-center" onSubmit={updatePost}>
+          <div className="flex flex-row pt-10">
+            <div className="flex flex-col justify-center">
+              <img className="w-2/3 mx-auto" src={imageUrl} alt={picName} />
+            </div>
 
-          <p className="text-center">
-            {submitted && (
-              <div className="success-message">Note has been updated!</div>
-            )}
-          </p>
+            <div className="flex flex-col justify-center w-full p-5">
+              <div className="flex flex-col justify-center p-6">
+                <div>
+                  <label htmlFor="title">Title</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setPicName(e.target.value)}
+                    value={picName}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="date">Date taken - TBD</label>
+                  {/* <div>{fetchedDate}</div> */}
+                </div>
+                <div>
+                  <label htmlFor="Image">Image URL from Imgur</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setImageUrl(e.target.value)}
+                    value={imageUrl}
+                    required
+                  />
+                </div>
+              </div>
+
+              <label className="text-center text-bold" htmlFor="Description">
+                Description
+              </label>
+              <textarea
+                rows="5"
+                type="text"
+                onChange={(e) => setDesc(e.target.value)}
+                value={desc}
+                required
+              />
+              <div className="flex justify-around p-8">
+                <NavLink to="/stLuciaPics">
+                  <Button className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+                    👈 Back to St. Lucia Memories
+                  </Button>
+                </NavLink>
+
+                <input
+                  className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+                  type="submit"
+                  value={submitted ? "Saving note..." : "💾 Save Updates"}
+                  disabled={submitted}
+                />
+
+                <NavLink to="/stLuciaPics">
+                  <Button
+                    onClick={removePost}
+                    className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+                  >
+                    ❌ Remove
+                  </Button>
+                </NavLink>
+              </div>
+              <p className="text-center">
+                {submitted && (
+                  <div className="success-message">Note has been updated!</div>
+                )}
+              </p>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default ViewUpdatePost
+export default ViewUpdatePost;

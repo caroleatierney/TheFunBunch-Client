@@ -22,3 +22,17 @@ TO DO:
 5) styling with Tailwind
 6) add a Sal page with a link to the video and picture of sign only if you can make it private
 7) rename repositories to TheFunBunch - test this works and delete
+
+    <div className="container">
+    <NavLink to="/stLuciaPics">
+      <Button className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+          👈 back
+      </Button>
+    </NavLink>
+
+    <NavLink to="/addPicsStLucia">
+      <Button className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+        Add new memory
+      </Button>
+    </NavLink>
+    </div>
