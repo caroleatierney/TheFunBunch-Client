@@ -4,7 +4,7 @@ To start Client - npm run dev
 To start Server - nodemon
 
 to get changes live, on client:
-    1) ensure css is always updated in the dist folder on Client: npx tailwindcss -i .src/index.css -o ./dist/output.css --watch
+    1) ensure css is always updated in the dist folder on Client: npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
 
     2) git commands
             git add -A
