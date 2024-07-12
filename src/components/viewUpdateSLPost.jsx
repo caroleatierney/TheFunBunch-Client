@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { Button } from "flowbite-react";
+import InputMask from "react-input-mask";
 
 function ViewUpdateSLPost() {
   const { id } = useParams();
@@ -9,8 +10,7 @@ function ViewUpdateSLPost() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [picDate] = useState(getDate());
-  const [fetchedDate, setFetchedDate] = useState("");
+  const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
   const [blogArray] = useState([]);
   const [submitted, setSubmitted] = useState(false);
@@ -27,7 +27,7 @@ function ViewUpdateSLPost() {
         const data = await response.json();
         setPicName(data.title);
         setImageUrl(data.image);
-        setFetchedDate(data.date);
+        setDate(data.date);
         setDesc(data.description);
         setIsLoading(false);
       } catch (error) {
@@ -37,14 +37,6 @@ function ViewUpdateSLPost() {
     };
     fetchData();
   }, []);
-
-  function getDate() {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
-    const date = today.getDate();
-    return `${month}/${date}/${year}`;
-  }
 
   const updatePost = async (e) => {
     e.preventDefault();
@@ -56,7 +48,7 @@ function ViewUpdateSLPost() {
         body: JSON.stringify({
           title: picName,
           image: imageUrl,
-          date: picDate,
+          date: date,
           description: desc,
           blogArray: blogArray,
         }),
@@ -89,6 +81,10 @@ function ViewUpdateSLPost() {
   // display form
   return (
     <div>
+      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
+        St. Lucia
+      </h1>
+
       <div>
         <form className="flex flex-col justify-center" onSubmit={updatePost}>
           <div className="flex flex-row pt-10">
@@ -123,12 +119,16 @@ function ViewUpdateSLPost() {
                   <label
                     htmlFor="date"
                     className="text-teal-500 font-margarine text-2xl p-4"
-                  >Date taken</label>
-                  <input
-                    type="text"
-                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-2"
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    value={fetchedDate}
+                  >
+                    Date taken
+                  </label>
+                  <InputMask
+                    mask="99/99/9999"
+                    maskChar={null}
+                    className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                    placeholder="mm/dd/yyyy"
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
                     required
                   />
                 </div>
