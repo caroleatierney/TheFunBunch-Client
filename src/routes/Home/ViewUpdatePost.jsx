@@ -93,28 +93,51 @@ function ViewUpdatePost() {
         <form className="flex flex-col justify-center" onSubmit={updatePost}>
           <div className="flex flex-row pt-10">
             <div className="flex flex-col justify-center">
-              <img className="w-2/3 mx-auto" src={imageUrl} alt={picName} />
+              <img
+                className="w-5/6 mx-auto border-orange-200 border-8"
+                src={imageUrl}
+                alt={picName}
+              />
             </div>
 
             <div className="flex flex-col justify-center w-full p-5">
               <div className="flex flex-col justify-center p-6">
                 <div>
-                  <label htmlFor="title">Title</label>
+                  <label
+                    htmlFor="title"
+                    className="text-teal-500 font-margarine text-2xl p-4"
+                  >
+                    Title
+                  </label>
                   <input
                     type="text"
+                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 
+                    style={{ width: `${Math.max(100, picName.length * 10)}px` }}
+                    focus:outline-none focus:ring-2 focus:ring-orange-300"
                     onChange={(e) => setPicName(e.target.value)}
                     value={picName}
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="date">Date taken - TBD</label>
+                  <label
+                    htmlFor="date"
+                    className="text-teal-500 font-margarine text-2xl p-4"
+                  >
+                    Date taken - TBD
+                  </label>
                   {/* <div>{fetchedDate}</div> */}
                 </div>
                 <div>
-                  <label htmlFor="Image">Image URL from Imgur</label>
+                  <label
+                    htmlFor="Image"
+                    className="text-teal-500 font-margarine text-2xl p-4"
+                  >
+                    Image URL from Imgur
+                  </label>
                   <input
                     type="text"
+                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                     required
@@ -122,11 +145,15 @@ function ViewUpdatePost() {
                 </div>
               </div>
 
-              <label className="text-center text-bold" htmlFor="Description">
+              <label
+                className="text-teal-500 font-margarine text-2xl p-4"
+                htmlFor="Description"
+              >
                 Description
               </label>
               <textarea
                 rows="5"
+                className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
                 type="text"
                 onChange={(e) => setDesc(e.target.value)}
                 value={desc}
@@ -134,13 +161,13 @@ function ViewUpdatePost() {
               />
               <div className="flex justify-around p-8">
                 <NavLink to="/stLuciaPics">
-                  <Button className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+                  <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
                     👈 Back to St. Lucia Memories
                   </Button>
                 </NavLink>
 
                 <input
-                  className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+                  className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
                   type="submit"
                   value={submitted ? "Saving note..." : "💾 Save Updates"}
                   disabled={submitted}
@@ -149,7 +176,7 @@ function ViewUpdatePost() {
                 <NavLink to="/stLuciaPics">
                   <Button
                     onClick={removePost}
-                    className="bg-white text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+                    className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
                   >
                     ❌ Remove
                   </Button>
