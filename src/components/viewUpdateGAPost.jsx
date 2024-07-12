@@ -65,7 +65,7 @@ function ViewUpdateGAPost() {
       if (response.ok) {
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/stLuciaPics");
+        navigate("/grandAntiguaPics");
       } else {
         console.log("Failed to submit data.");
       }
@@ -81,7 +81,7 @@ function ViewUpdateGAPost() {
         method: "DELETE",
       });
       if (response.ok) {
-        navigate("/stLuciaPics");
+        navigate("/grandAntiguaPics");
       }
     } catch (error) {}
   };
@@ -164,9 +164,9 @@ function ViewUpdateGAPost() {
                 required
               />
               <div className="flex justify-around p-8">
-                <NavLink to="/stLuciaPics">
+                <NavLink to="/grandAntiguaPics">
                   <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-                    👈 Back to St. Lucia Memories
+                    👈 Back to Grand Antigua Memories
                   </Button>
                 </NavLink>
 
@@ -177,7 +177,7 @@ function ViewUpdateGAPost() {
                   disabled={submitted}
                 />
 
-                <NavLink to="/stLuciaPics">
+                <NavLink to="/grandAntiguaPics">
                   <Button
                     onClick={removePost}
                     className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"

@@ -39,7 +39,7 @@ function GrandAntiguaPics() {
       ) : (
         <div>
           <h1 className="text-center text-teal-500 font-margarine text-3xl pt-2">
-            St. Lucia
+            Grand Antigua
           </h1>
           <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2">
             Click on the photo to update it
