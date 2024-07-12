@@ -5,9 +5,13 @@ import { Navbar, Button } from "flowbite-react";
 function Header() {
   return (
     <header className="flex items-center justify-evenly px-4 py-2">
-      <Navbar fluid rounded>
-        <div>
-          <h1 className="font-margarine text-5xl font-bold text-sky-600 text-center">
+      <Navbar
+        fluid
+        rounded
+        className="flex items-center justify-evenly px-4 py-2 bg-transparent"
+      >
+        <div className="bg-white bg-opacity-20">
+          <h1 className="font-margarine text-5xl font-bold text-sky-600 text-center bg-transparent">
             The Fun Bunch
           </h1>
           <ul className="flex space-x-20 pt-4">
