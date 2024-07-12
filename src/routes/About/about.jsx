@@ -1,5 +1,5 @@
 import React from 'react'
-import TheFunBunch from "../../assets/TheFunBunch.jpeg"
+import LocalsNight from "../../assets/Locals-Night.jpeg"
 
 function About() {
   return (
@@ -18,8 +18,8 @@ function About() {
       <div>
         <img
           className="w-full border-8 border-orange-200 mx-auto h-full"
-          src={TheFunBunch}
-          alt={"The Fun Bunch"}
+          src={LocalsNight}
+          alt={"Grand Antigua Local's Party"}
         />
       </div>
     </div>

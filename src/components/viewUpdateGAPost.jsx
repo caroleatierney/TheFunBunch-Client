@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { Button } from "flowbite-react";
 
-function ViewUpdatePost() {
+function ViewUpdateGAPost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs/${id}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [picDate] = useState(getDate());
@@ -123,10 +123,14 @@ function ViewUpdatePost() {
                   <label
                     htmlFor="date"
                     className="text-teal-500 font-margarine text-2xl p-4"
-                  >
-                    Date taken - TBD
-                  </label>
-                  {/* <div>{fetchedDate}</div> */}
+                  >Date taken</label>
+                  <input
+                    type="text"
+                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-2"
+                    onChange={(e) => setImageUrl(e.target.value)}
+                    value={fetchedDate}
+                    required
+                  />
                 </div>
                 <div>
                   <label
@@ -137,7 +141,7 @@ function ViewUpdatePost() {
                   </label>
                   <input
                     type="text"
-                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-2"
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                     required
@@ -195,4 +199,4 @@ function ViewUpdatePost() {
   );
 }
 
-export default ViewUpdatePost;
+export default ViewUpdateGAPost;

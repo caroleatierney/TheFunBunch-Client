@@ -21,21 +21,21 @@ function Header() {
             <li>
               <NavLink to="/about">
                 <Button className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100">
-                  About
+                  About Us
                 </Button>
               </NavLink>
             </li>
             <li>
               <NavLink to="/stLuciaPics">
                 <Button className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100">
-                  St. Lucia Pictures
+                  St. Lucia Memories
                 </Button>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/stLuciaPics">
+              <NavLink to="/grandAntiguaPics">
                 <Button className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100">
-                  Grand Antigua Pictures
+                  Grand Antigua Memories
                 </Button>
               </NavLink>
             </li>

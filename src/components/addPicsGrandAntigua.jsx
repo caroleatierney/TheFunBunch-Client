@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import InputMask from "react-input-mask";
 
-function AddPicsStLucia() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
+function AddPicsGrandAntigua() {
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs`;
   const [newPicName, setNewPicName] = useState("");
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newPicDate, setNewPicDate] = useState("");
@@ -35,7 +35,7 @@ function AddPicsStLucia() {
         setNewDesc("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/stLuciaPics");
+        navigate("/grandAntiguaPics");
       } else {
         console.log("Failed to submit data.");
       }
@@ -47,12 +47,12 @@ function AddPicsStLucia() {
   // display form
   return (
     <div>
-      <Link to="/stLuciaPics" className="back-button">
+      <Link to="/grandAntiguaPics" className="back-button">
         👈 back
       </Link>
 
       <div>
-        Add a new Memory - addPicsStLucia
+        Add a new Memory - addPicsGrandAntigua
         <form onSubmit={addPic}>
           <label htmlFor="title">Title of Image</label>
           <input
@@ -105,4 +105,4 @@ function AddPicsStLucia() {
   );
 }
 
-export default AddPicsStLucia
+export default AddPicsGrandAntigua

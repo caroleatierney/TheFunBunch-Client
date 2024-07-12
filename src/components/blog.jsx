@@ -1,4 +1,14 @@
 // junk???// This will be an individual post to display when the image is clicked on
+
+  function getDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    return `${month}/${date}/${year}`;
+  }
+
+  
 import React, { Component } from "react";
 
 import Posts from "./Posts";
