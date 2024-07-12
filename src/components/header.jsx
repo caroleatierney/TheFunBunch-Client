@@ -10,7 +10,7 @@ function Header() {
           <h1 className="font-margarine text-5xl font-bold text-sky-600 text-center">
             The Fun Bunch
           </h1>
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-20 pt-4">
             <li>
               <NavLink to="/">
                 <Button className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100">
