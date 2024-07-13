@@ -5,7 +5,7 @@ import { Card, Button } from "flowbite-react";
 
 function StLuciaPics() {
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
-    
+    console.log("BASE URL: " + baseUrl)
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
