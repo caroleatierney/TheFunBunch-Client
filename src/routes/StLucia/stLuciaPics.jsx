@@ -5,7 +5,6 @@ import { Card, Button } from "flowbite-react";
 
 function StLuciaPics() {
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
-    console.log("BASE URL: " + baseUrl)
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -45,7 +44,7 @@ function StLuciaPics() {
               Click on the photo to update it
             </h1>
             <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 lg:grid grid-cols-2 xl:grid-cols-4">
-              {data.map((item) => (
+              {data.map((item, index) => (
                 <Card className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200">
                   <NavLink key={item._id} to={`/ViewUpdateSLPost/${item._id}`}>
                     <h3 className="text-center text-teal-500 font-margarine text-lg p-2">

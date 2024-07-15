@@ -3,6 +3,10 @@
 To start Client - npm run dev
 To start Server - nodemon
 
+npm run preview: The vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173 
+
+npm run preview -- --port 8080
+
 to get changes live, on client:
     1) ensure css is always updated in the dist folder on Client: npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
 
