@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-function AddBlog() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
-  const [newBlogName, setNewBlogName] = useState("");
-  const [newBlogDate, setNewBlogDate] = (getDate());
+function AddBlogGA() {
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandStLucia`;
+  const [newBlogTitle, setNewBlogTitle] = useState("");
+  const [newBlogDate, setNewBlogDate] = getDate();
   const [newComments, setNewComments] = useState("");
   const [newRating, setNewRating] = useState("");
-  const [newBlogArray] = useState([]); 
+  // const [newBlogArray] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
   function getDate() {
-      const today = new Date();
-      const month = today.getMonth() + 1;
-      const year = today.getFullYear();
-      const date = today.getDate();
-      return `${month}/${date}/${year}`;
-  };
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    return `${month}/${date}/${year}`;
+  }
 
   const addBlog = async (e) => {
     e.preventDefault();
@@ -59,8 +59,8 @@ function AddBlog() {
           <label htmlFor="blogName">Your Name</label>
           <input
             type="text"
-            onChange={(e) => setNewBlogName(e.target.value)}
-            value={newPicName}
+            onChange={(e) => setNewBlogTitle(e.target.value)}
+            value={newBlogTite}
             required
           />
 
@@ -74,19 +74,19 @@ function AddBlog() {
           <label htmlFor="Rating">Rating</label>
           <input
             type="text"
-            onChange={(e) => setNewRating(e.target.value)}
-            value={setNewRating}
+            onChange={(e) => setRating(e.target.value)}
+            value={newRating}
             required
           />
           <input
             type="submit"
-            value={submitted ? "Saving note..." : "💾 Save Note"}
+            value={submitted ? "Saving comment..." : "💾 Save Comment"}
             disabled={submitted}
           />
 
           <p className="text-center">
             {submitted && (
-              <div className="success-message">Note has been added!</div>
+              <div className="success-message">Comment has been added!</div>
             )}
           </p>
         </form>
@@ -95,4 +95,4 @@ function AddBlog() {
   );
 }
 
-export default AddBlog
+export default AddBlogGA;

@@ -177,6 +177,14 @@ function ViewUpdateSLPost() {
                   disabled={submitted}
                 />
 
+                <NavLink to="/addBlogSL">
+                  <Button
+                    className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+                  >
+                    Add a Comment
+                  </Button>
+                </NavLink>
+
                 <NavLink to="/stLuciaPics">
                   <Button
                     onClick={removePost}
