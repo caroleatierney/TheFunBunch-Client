@@ -18,7 +18,7 @@ function AddBlogGA() {
     return `${month}/${date}/${year}`;
   }
 
-  const addBlog = async (e) => {
+  const addBlog= async (e) => {
     e.preventDefault();
 
     try {

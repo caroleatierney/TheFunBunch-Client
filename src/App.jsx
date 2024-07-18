@@ -10,11 +10,14 @@ import StLuciaPics         from "./routes/StLucia/stLuciaPics";
 import AddPicsStLucia      from "./components/addPicsStLucia";
 import ViewUpdateSLPost    from "./components/viewUpdateSLPost";
 import AddBlogSL           from "./components/addBlogSL";
+import DisplaySLBlogs      from "./components/displaySLBlogs";
+import UpdateSLBlogs       from "./components/updateSLBlogs";
 
 import GrandAntiguaPics    from "./routes/GrandAntigua/grandAntiguaPics";
 import AddPicsGrandAntigua from "./components/addPicsGrandAntigua";
 import ViewUpdateGAPost    from "./components/viewUpdateGAPost";
 import AddBlogGA           from "./components/addBlogGA";
+// import ViewUpdateGABlogs from "./components/viewUpdateGABlogs";
 
 function App() {
   return (
@@ -29,11 +32,26 @@ function App() {
           <Route path="/stLuciaPics" element={<StLuciaPics />} />
           <Route path="/grandAntiguaPics" element={<GrandAntiguaPics />} />
           <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
-          <Route path="/addPicsGrandAntigua" element={<AddPicsGrandAntigua />} />
-          <Route path="/addBlogSL" element={<AddBlogSL />} />
-          <Route path="/addBlogGA" element={<AddBlogGA />} />
+          <Route
+            path="/addPicsGrandAntigua"
+            element={<AddPicsGrandAntigua />}
+          />
+          <Route path="/addBlogSL/:id" element={<AddBlogSL />} />
+          <Route path="/addBlogGA/:id" element={<AddBlogGA />} />
           <Route path="/viewUpdateSLPost/:id" element={<ViewUpdateSLPost />} />
           <Route path="/viewUpdateGAPost/:id" element={<ViewUpdateGAPost />} />
+          <Route
+            path="/displaySLBlogs/:id"
+            element={<DisplaySLBlogs />}
+          />
+          <Route
+            path="/updateSLBlogs/:id"
+            element={<UpdateSLBlogs />}
+          />
+          {/* <Route
+            path="/viewUpdateGABlogs/:id"
+            element={<ViewUpdateGABlogs />}
+          /> */}
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

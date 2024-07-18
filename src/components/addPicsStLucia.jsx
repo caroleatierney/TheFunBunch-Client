@@ -109,7 +109,7 @@ function AddPicsStLucia() {
             className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             type="text"
             onChange={(e) => setDesc(e.target.value)}
-            value={newDesc}
+            value={setNewDesc}
             required
           />
 

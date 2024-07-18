@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 function AddBlogSL() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
   const [newBlogName, setNewBlogName] = useState("");
-  const [newBlogDate, setNewBlogDate] = (getDate());
+  const blogDate=(getDate());
   const [newComments, setNewComments] = useState("");
   const [newRating, setNewRating] = useState("");
-  const [newBlogArray] = useState([]); 
   const [submitted, setSubmitted] = useState(false);
 
   function getDate() {
@@ -22,15 +23,34 @@ function AddBlogSL() {
     e.preventDefault();
 
     try {
-      const response = await fetch(baseUrl, {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const blogArray = data.blogArray || [];
+
+      const newBlog = {};
+      newBlog.blogName = newBlogName;
+      newBlog.blogDate = blogDate;
+      newBlog.comments = newComments;
+      newBlog.rating = newRating;
+      
+      blogArray.push(newBlog)
+
+      console.log("Add Blog Blog Array before PUT" + blogArray)
+      console.log(baseUrl)
+
+      const putData = await fetch(baseUrl, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          blogArray: newBlogArray,
+          blogArray: blogArray
         }),
       });
 
-      if (response.ok) {
+      if (putData.ok) {
         // set form fields to blank after update
         setNewBlogName("");
         setNewComments("");
@@ -39,7 +59,12 @@ function AddBlogSL() {
         setTimeout(() => setSubmitted(false), 2000);
         navigate("/stLuciaPics");
       } else {
-        console.log("Failed to submit data.");
+        console.log(
+          "Failed to update data. Server response status:",
+          putData.status
+        );
+        console.log("Server response message:", putData.statusText);
+        console.log("Failed to update data.");
       }
     } catch (error) {
       console.log(error);
@@ -59,7 +84,7 @@ function AddBlogSL() {
       <form onSubmit={addBlog}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
           <label
-            htmlFor="blogName"
+            htmlFor="Blog Name"
             className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
           >
             Your Name

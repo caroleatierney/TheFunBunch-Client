@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { Button } from "flowbite-react";
 import InputMask from "react-input-mask";
+import DisplaySLBlogs from "./displaySLBlogs";
 
 function ViewUpdateSLPost() {
   const { id } = useParams();
@@ -97,40 +98,43 @@ function ViewUpdateSLPost() {
             </div>
 
             <div className="flex flex-col justify-center w-full p-5">
-              <div className="flex flex-col justify-center">
-                <div>
-                  <label
-                    htmlFor="title"
-                    className="text-teal-500 font-margarine text-2xl pr-2"
-                  >
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 
-                    style={{ width: `${Math.max(100, picName.length * 10)}px` }}
-                    focus:outline-none focus:ring-2 focus:ring-orange-300"
-                    onChange={(e) => setPicName(e.target.value)}
-                    value={picName}
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="date"
-                    className="text-teal-500 font-margarine text-2xl pr-2"
-                  >
-                    Date taken
-                  </label>
-                  <InputMask
-                    mask="99/99/9999"
-                    maskChar={null}
-                    className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-4"
-                    placeholder="mm/dd/yyyy"
-                    onChange={(e) => setDate(e.target.value)}
-                    value={date}
-                    required
-                  />
+              <div className="flex justify-center">
+                <div className="flex flex-row items-center">
+                  <div>
+                    <label
+                      htmlFor="title"
+                      className="text-teal-500 font-margarine text-2xl"
+                    >
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 
+                      style={{ width: `${Math.max(100, picName.length * 10)}px` }}
+                      focus:outline-none focus:ring-2 focus:ring-orange-300"
+                      onChange={(e) => setPicName(e.target.value)}
+                      value={picName}
+                      required
+                    />
+                  </div>
+
+                  <div className="flex items-center">
+                    <label
+                      htmlFor="date"
+                      className="text-teal-500 font-margarine text-2xl pl-10"
+                    >
+                      Date taken
+                    </label>
+                    <InputMask
+                      mask="99/99/9999"
+                      maskChar={null}
+                      className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-4"
+                      placeholder="mm/dd/yyyy"
+                      onChange={(e) => setDate(e.target.value)}
+                      value={date}
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
                   <label
@@ -163,6 +167,7 @@ function ViewUpdateSLPost() {
                 value={desc}
                 required
               />
+
               <div className="flex justify-around p-8">
                 <NavLink to="/stLuciaPics">
                   <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
@@ -177,10 +182,8 @@ function ViewUpdateSLPost() {
                   disabled={submitted}
                 />
 
-                <NavLink to="/addBlogSL">
-                  <Button
-                    className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-                  >
+                <NavLink to={`/addBlogSL/${id}`}>
+                  <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
                     Add a Comment
                   </Button>
                 </NavLink>
@@ -199,6 +202,7 @@ function ViewUpdateSLPost() {
                   <div className="success-message">Note has been updated!</div>
                 )}
               </p>
+              <DisplaySLBlogs />
             </div>
           </div>
         </form>
