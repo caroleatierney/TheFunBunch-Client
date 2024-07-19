@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { Card, Button } from "flowbite-react";
+import UpdateSLBlogs from "./updateSLBlogs";
 
 function DisplaySLBlogs() {
   const { id } = useParams();
@@ -19,6 +20,16 @@ function DisplaySLBlogs() {
         }
         const data = await response.json();
         setData(data); // Update data state with fetched data
+
+        // Take a break for safety's sake!
+        // const blogEntry = data.blogArray.find(blog => blog._id === id); // Find the specific blog entry
+
+        // if (blogEntry) {
+        //   setBlogName(blogEntry.blogName)
+        //   setBlogDate(blogEntry.blogDate);
+        //   setComments(blogEntry.comments);
+        //   setRating(blogEntry.rating);
+        // }
         setIsLoading(false);
       } catch (error) {
         setError("Error fetching data," + error.message);
@@ -26,11 +37,12 @@ function DisplaySLBlogs() {
       }
     };
     fetchData();
-  }, []);
+  }, [baseUrl, id]);
 
   return (
     // Returns all blogs
     <div>
+      <h1>In DisaySLBlogs</h1>
       {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
       {isLoading ? (
         <p>Loading...</p>
@@ -48,28 +60,20 @@ function DisplaySLBlogs() {
                     key={item.id}
                     className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
                   >
-                    <NavLink
-                      key={item._id}
-                      to={`/ViewUpdateSLPost/${item._id}`}
-                    >
-                      <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                        {item.blogName}
+                    <NavLink key={item._id} to={`/UpdateSLBlogs/${item._id}`}>
+                      <div>
                         <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                          {item.blogDate}
+                          {item.blogName}
+                          <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                            {item.blogDate}
+                          </h3>
                         </h3>
-                      </h3>
-                      <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                        {item.comments}
-                      </h3>
-                      <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                        {item.rating}
-                      </h3>
-                      <div className="flex justify-center">
-                        <NavLink to="/updateSLBlogs">
-                          <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100 mb-2">
-                            Update Comments
-                          </Button>
-                        </NavLink>
+                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                          {item.comments}
+                        </h3>
+                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                          {item.rating}
+                        </h3>
                       </div>
                     </NavLink>
                   </Card>

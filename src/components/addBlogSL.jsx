@@ -6,26 +6,26 @@ function AddBlogSL() {
   const navigate = useNavigate();
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
   const [newBlogName, setNewBlogName] = useState("");
-  const blogDate=(getDate());
+  const blogDate = getDate();
   const [newComments, setNewComments] = useState("");
   const [newRating, setNewRating] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  function getDate() {
+    function getDate() {
       const today = new Date();
       const month = today.getMonth() + 1;
       const year = today.getFullYear();
       const date = today.getDate();
       return `${month}/${date}/${year}`;
-  };
+    }
 
-  const addBlog = async (e) => {
+  const addBlogSL = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch(baseUrl);
       if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
+        throw new Error(`Failed to fetch data: ${response.status}`);
       }
 
       const data = await response.json();
@@ -36,17 +36,14 @@ function AddBlogSL() {
       newBlog.blogDate = blogDate;
       newBlog.comments = newComments;
       newBlog.rating = newRating;
-      
-      blogArray.push(newBlog)
 
-      console.log("Add Blog Blog Array before PUT" + blogArray)
-      console.log(baseUrl)
+      blogArray.push(newBlog);
 
       const putData = await fetch(baseUrl, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          blogArray: blogArray
+          blogArray: blogArray,
         }),
       });
 
@@ -78,10 +75,10 @@ function AddBlogSL() {
         St. Lucia
       </h1>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Add a Comment
+        Update a Comment
       </h1>
 
-      <form onSubmit={addBlog}>
+      <form onSubmit={addBlogSL}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
           <label
             htmlFor="Blog Name"
@@ -103,8 +100,9 @@ function AddBlogSL() {
           >
             Your Comments
           </label>
-          <input
+          <textarea
             type="text"
+            rows="5"
             className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setNewComments(e.target.value)}
             value={newComments}
@@ -125,7 +123,7 @@ function AddBlogSL() {
           />
           <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
             <Link
-              to="/grandAntiguaPics"
+              to="/stLuciaPics"
               className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
             >
               👈 back
@@ -134,14 +132,14 @@ function AddBlogSL() {
             <input
               type="submit"
               className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              value={submitted ? "Saving comment..." : "💾 Save Comment"}
+              value={submitted ? "Saving comment..." : "💾 Save Changes"}
               disabled={submitted}
             />
           </div>
 
           <p className="text-center">
             {submitted && (
-              <div className="success-message">Comment has been added!</div>
+              <div className="success-message">Comment has been updated!</div>
             )}
           </p>
         </div>
