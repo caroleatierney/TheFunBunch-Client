@@ -32,22 +32,13 @@ function App() {
           <Route path="/stLuciaPics" element={<StLuciaPics />} />
           <Route path="/grandAntiguaPics" element={<GrandAntiguaPics />} />
           <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
-          <Route
-            path="/addPicsGrandAntigua"
-            element={<AddPicsGrandAntigua />}
-          />
+          <Route path="/addPicsGrandAntigua" element={<AddPicsGrandAntigua />} />
           <Route path="/addBlogSL/:id" element={<AddBlogSL />} />
           <Route path="/addBlogGA/:id" element={<AddBlogGA />} />
-          <Route path="/viewUpdateSLPost/:id" element={<ViewUpdateSLPost />} />
+          <Route path="/viewUpdateSLPost/:postId" element={<ViewUpdateSLPost />} />
           <Route path="/viewUpdateGAPost/:id" element={<ViewUpdateGAPost />} />
-          <Route
-            path="/displaySLBlogs/:id"
-            element={<DisplaySLBlogs />}
-          />
-          <Route
-            path="/updateSLBlogs/:id"
-            element={<UpdateSLBlogs />}
-          />
+          <Route path="/displaySLBlogs/:postId" element={<DisplaySLBlogs />} />
+          <Route path="/updateSLBlogs/:postId/:itemId" element={<UpdateSLBlogs />} />
           {/* <Route
             path="/viewUpdateGABlogs/:id"
             element={<ViewUpdateGABlogs />}

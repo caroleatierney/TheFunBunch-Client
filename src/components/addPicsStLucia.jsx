@@ -29,14 +29,14 @@ function AddPicsStLucia() {
       });
 
       if (response.ok) {
-        // set form fields to blank after update
+        // set form fields to blank after adding
         setNewPicName("");
         setNewImageUrl("");
         setNewPicDate("");
         setNewDesc("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/stLuciaPics");
+        navigate("/viewUpdateSLPost");
       } else {
         console.log("Failed to submit data.");
       }
@@ -108,14 +108,14 @@ function AddPicsStLucia() {
             rows="5"
             className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             type="text"
-            onChange={(e) => setDesc(e.target.value)}
-            value={setNewDesc}
+            onChange={(e) => setNewDesc(e.target.value)}
+            value={newDesc}
             required
           />
 
           <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
             <Link
-              to="/grandAntiguaPics"
+              to="/stLuciaPics"
               className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
             >
               👈 back

@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 
 function UpdateSLBlogs() {
-  const { id } = useParams();
+  const { postId, itemId } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${postId}`;
   const [blogName, setBlogName] = useState("");
   const [blogDate, setBlogDate] = useState("");
   const [comments, setComments] = useState("");
@@ -23,29 +23,24 @@ function UpdateSLBlogs() {
           throw new Error(`Failed to fetch data: ${response.status}`);
         }
         const data = await response.json();
-        // const blogArray = data.blogArray || [];
-        // const newBlog = {};
-        // blogDate = blogArray.BlogDate
-        // newBlog.blogName = newBlogName;
-        // newBlog.blogDate = blogArray.blogDate;
-        // newBlog.comments = newComments;
-        // newBlog.rating = newRating;
-        // blogArray.push(newBlog);
+        const blogArray = data.blogArray || [];
 
-        setBlogName(data.blogArray.blogName);
-        setComments(data.blogArray.comments);
-        setBlogDate(data.blogArray.blogDate);
-        setRating(data.blogArray.rating);
+        // Find the specific blog post by itemId
+        const blog = blogArray.find((item) => item._id === itemId);
+        if (blog) {
+          setBlogName(blog.blogName);
+          setComments(blog.comments);
+          setBlogDate(blog.blogDate);
+          setRating(blog.rating);
+        }
         setIsLoading(false);
-        // blogArray.push(newBlog);
-
       } catch (error) {
         setError("Error fetching data," + error.message);
         setIsLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [baseUrl, itemId]);
 
   const updateBlog = async (e) => {
     e.preventDefault();
@@ -69,14 +64,12 @@ function UpdateSLBlogs() {
             setNewRating("");
             setSubmitted(true);
             setTimeout(() => setSubmitted(false), 2000);
-            navigate("/stLuciaPics");
           } else {
             console.log(
               "Failed to update data. Server response status:",
               putData.status
             );
             console.log("Server response message:", putData.statusText);
-            console.log("Failed to update data.");
           }
         } catch (error) {
           console.log(error);
@@ -87,18 +80,23 @@ function UpdateSLBlogs() {
     e.preventDefault();
 
     try {
-      const response = await fetch(baseUrl, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${baseUrl}/stLuciaBlogs/${itemId}`, {
+          method: "DELETE",
+        });
       if (response.ok) {
-        setData((prevData) => ({
-          ...prevData,
-          blogArray: prevData.blogArray.filter(blog => blog_.id !== blogId),
-        }))
-
-        navigate("/stLuciaPics");
+        // setData((prevData) => ({
+        //   ...prevData,
+        //   blogArray: prevData.blogArray.filter(
+        //     (item) => item._id !== itemIdToDelete
+        //   ),
+        // }));
+      } else {
+        console.error("Failed to delete the blog item");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("An error occurred while deleting the blog item:", error);
+    }
   };
 
   // display form
@@ -108,7 +106,7 @@ function UpdateSLBlogs() {
         St. Lucia
       </h1>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Add a Comment
+        Update a Comment
       </h1>
 
       <form onSubmit={updateBlog}>
@@ -168,7 +166,7 @@ function UpdateSLBlogs() {
               disabled={submitted}
             />
 
-            <NavLink to="/stLuciaPics">
+            <NavLink to="/viewUpdateSLPics">
               <Button
                 onClick={removeBlog}
                 className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"

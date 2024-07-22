@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 import InputMask from "react-input-mask";
 import DisplaySLBlogs from "./displaySLBlogs";
 
 function ViewUpdateSLPost() {
-  const { id } = useParams();
+  const { postId } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${id}`;
+  const baseUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/api/stluciablogs/${postId}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [date, setDate] = useState("");
@@ -17,7 +19,7 @@ function ViewUpdateSLPost() {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const dateInputRef = useRef(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -126,6 +128,7 @@ function ViewUpdateSLPost() {
                       Date taken
                     </label>
                     <InputMask
+                      ref={dateInputRef}
                       mask="99/99/9999"
                       maskChar={null}
                       className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-4"
@@ -182,7 +185,7 @@ function ViewUpdateSLPost() {
                   disabled={submitted}
                 />
 
-                <NavLink to={`/addBlogSL/${id}`}>
+                <NavLink to={`/addBlogSL/${postId}`}>
                   <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
                     Add a Comment
                   </Button>
@@ -202,7 +205,7 @@ function ViewUpdateSLPost() {
                   <div className="success-message">Note has been updated!</div>
                 )}
               </p>
-              <DisplaySLBlogs />
+              <DisplaySLBlogs postId={postId} />
             </div>
           </div>
         </form>

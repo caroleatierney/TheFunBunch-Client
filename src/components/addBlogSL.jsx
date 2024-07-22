@@ -56,26 +56,21 @@ function AddBlogSL() {
         setTimeout(() => setSubmitted(false), 2000);
         navigate("/stLuciaPics");
       } else {
-        console.log(
-          "Failed to update data. Server response status:",
-          putData.status
-        );
+        console.log("Failed to update data. Server response status:", putData.status);
         console.log("Server response message:", putData.statusText);
-        console.log("Failed to update data.");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  // display form
   return (
     <div>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Update a Comment
+        Add a new Comment
       </h1>
 
       <form onSubmit={addBlogSL}>
