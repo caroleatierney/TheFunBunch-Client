@@ -54,7 +54,8 @@ function AddBlogSL() {
         setNewRating("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/stLuciaPics");
+        navigate("/viewUpdateSLPost");
+        // navigate(`/viewUpdateSLPost/${id}`);
       } else {
         console.log("Failed to update data. Server response status:", putData.status);
         console.log("Server response message:", putData.statusText);

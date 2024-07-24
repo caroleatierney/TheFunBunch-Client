@@ -79,18 +79,17 @@ function UpdateSLBlogs() {
   const removeBlog = async (e) => {
     e.preventDefault();
 
+const test = `${baseUrl}/blogArray/${itemId}`;
+console.log("Test", test)
     try {
       const response = await fetch(
-        `${baseUrl}/stLuciaBlogs/${itemId}`, {
+        `${baseUrl}/blogArray/${itemId}`, {
           method: "DELETE",
-        });
+        }
+      );
       if (response.ok) {
-        // setData((prevData) => ({
-        //   ...prevData,
-        //   blogArray: prevData.blogArray.filter(
-        //     (item) => item._id !== itemIdToDelete
-        //   ),
-        // }));
+        navigate("/viewUpdateSLPost");
+        //  navigate(`/viewUpdateSLPost/${postId}`);
       } else {
         console.error("Failed to delete the blog item");
       }
@@ -166,7 +165,7 @@ function UpdateSLBlogs() {
               disabled={submitted}
             />
 
-            <NavLink to="/viewUpdateSLPics">
+            <NavLink to="/viewUpdateSLPost/${postId}">
               <Button
                 onClick={removeBlog}
                 className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
