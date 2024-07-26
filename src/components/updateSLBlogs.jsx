@@ -54,10 +54,10 @@ function UpdateSLBlogs() {
       const blogArray = data.blogArray || [];
 
       const newBlog = {};
-      newBlog.blogName = newBlogName;
+      newBlog.blogName = blogName;
       newBlog.blogDate = blogDate;
-      newBlog.comments = newComments;
-      newBlog.rating = newRating;
+      newBlog.comments = comments;
+      newBlog.rating = rating;
 
       blogArray.push(newBlog);
 
@@ -69,17 +69,14 @@ function UpdateSLBlogs() {
         }),
       });
 
-      console.log("UPDATESLBLOGS");
-
       if (putData.ok) {
         // set form fields to blank after update
-        setNewBlogName("");
-        setNewComments("");
-        setNewRating("");
+        setBlogName("");
+        setComments("");
+        setRating("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/viewUpdateSLPost");
-        // navigate(`/viewUpdateSLPost/${id}`);
+        navigate(`/viewUpdateSLPost/${postId}`);
       } else {
         console.log(
           "Failed to update data. Server response status:",

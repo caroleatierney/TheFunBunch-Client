@@ -8,9 +8,7 @@ import DisplaySLBlogs from "./displaySLBlogs";
 function ViewUpdateSLPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${
-    import.meta.env.VITE_SERVER_URL
-  }/api/stluciablogs/${postId}`;
+  const baseUrl = `${ import.meta.env.VITE_SERVER_URL }/api/stluciablogs/${postId}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [date, setDate] = useState("");
@@ -20,6 +18,7 @@ function ViewUpdateSLPost() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const dateInputRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,7 +59,7 @@ function ViewUpdateSLPost() {
       if (response.ok) {
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/stLuciaPics");
+        navigate(`/viewUpdateSLPost/${postId}`);
       } else {
         console.log("Failed to submit data.");
       }
