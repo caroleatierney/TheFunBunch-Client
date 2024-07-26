@@ -33,10 +33,10 @@ function App() {
           <Route path="/grandAntiguaPics" element={<GrandAntiguaPics />} />
           <Route path="/addPicsStLucia" element={<AddPicsStLucia />} />
           <Route path="/addPicsGrandAntigua" element={<AddPicsGrandAntigua />} />
-          <Route path="/addBlogSL/:id" element={<AddBlogSL />} />
-          <Route path="/addBlogGA/:id" element={<AddBlogGA />} />
+          <Route path="/addBlogSL/:postId" element={<AddBlogSL />} />
+          <Route path="/addBlogGA/:postId" element={<AddBlogGA />} />
           <Route path="/viewUpdateSLPost/:postId" element={<ViewUpdateSLPost />} />
-          <Route path="/viewUpdateGAPost/:id" element={<ViewUpdateGAPost />} />
+          <Route path="/viewUpdateGAPost/:postId" element={<ViewUpdateGAPost />} />
           <Route path="/displaySLBlogs/:postId" element={<DisplaySLBlogs />} />
           <Route path="/updateSLBlogs/:postId/:itemId" element={<UpdateSLBlogs />} />
           {/* <Route

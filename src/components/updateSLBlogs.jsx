@@ -44,43 +44,57 @@ function UpdateSLBlogs() {
 
   const updateBlog = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data: ${response.status}`);
+      }
 
-        try {
-          const response = await fetch(baseUrl, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              blogName,
-              blogDate,
-              comments,
-              rating,
-            }),
-          });
+      const data = await response.json();
+      const blogArray = data.blogArray || [];
 
-          if (response.ok) {
-            // set form fields to blank after update
-            setNewBlogName("");
-            setNewComments("");
-            setNewRating("");
-            setSubmitted(true);
-            setTimeout(() => setSubmitted(false), 2000);
-          } else {
-            console.log(
-              "Failed to update data. Server response status:",
-              putData.status
-            );
-            console.log("Server response message:", putData.statusText);
-          }
-        } catch (error) {
-          console.log(error);
-        }
+      const newBlog = {};
+      newBlog.blogName = newBlogName;
+      newBlog.blogDate = blogDate;
+      newBlog.comments = newComments;
+      newBlog.rating = newRating;
+
+      blogArray.push(newBlog);
+
+      const putData = await fetch(baseUrl, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          blogArray: blogArray,
+        }),
+      });
+
+      console.log("UPDATESLBLOGS");
+
+      if (putData.ok) {
+        // set form fields to blank after update
+        setNewBlogName("");
+        setNewComments("");
+        setNewRating("");
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 2000);
+        navigate("/viewUpdateSLPost");
+        // navigate(`/viewUpdateSLPost/${id}`);
+      } else {
+        console.log(
+          "Failed to update data. Server response status:",
+          putData.status
+        );
+        console.log("Server response message:", putData.statusText);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const removeBlog = async (e) => {
     e.preventDefault();
 
-const test = `${baseUrl}/blogArray/${itemId}`;
-console.log("Test", test)
     try {
       const response = await fetch(
         `${baseUrl}/blogArray/${itemId}`, {
@@ -88,8 +102,7 @@ console.log("Test", test)
         }
       );
       if (response.ok) {
-        navigate("/viewUpdateSLPost");
-        //  navigate(`/viewUpdateSLPost/${postId}`);
+         navigate(`/ViewUpdateSLPost/${postId}`);
       } else {
         console.error("Failed to delete the blog item");
       }
