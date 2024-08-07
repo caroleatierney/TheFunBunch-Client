@@ -3,8 +3,8 @@ import TheFunBunch from "../../assets/TheFunBunch.jpeg"
 
 function HomeScreen() {
   return (
-    <div>
-      <img className="w-1/2 border-8 border-orange-200 mx-auto h-full pt-5" src={TheFunBunch} alt={"The Fun Bunch"} />
+    <div className="flex w-full mx-auto">
+      <img className="w-3/4 border-8 border-orange-200 mx-auto h-full mt-5" src={TheFunBunch} alt={"The Fun Bunch"} />
     </div>
   );
 }
