@@ -100,7 +100,7 @@ function ViewUpdateSLPost() {
 
             <div className="flex flex-col justify-center w-full p-5">
               <div className="flex justify-center">
-                <div className="flex flex-row items-center">
+                <div className="flex flex-col tablet:flex-row items-center">
                   <div>
                     <label
                       htmlFor="title"
@@ -119,7 +119,7 @@ function ViewUpdateSLPost() {
                     />
                   </div>
 
-                  <div className="flex items-center">
+                  <div className="flex flex-col tablet:flex-row items-center">
                     <label
                       htmlFor="date"
                       className="text-teal-500 font-margarine text-2xl pl-10"

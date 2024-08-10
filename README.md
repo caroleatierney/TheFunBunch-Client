@@ -1,5 +1,17 @@
 # The Fun Bunch - Client
 
+          className="font-margarine font-bold text-center bg-transparent 
+          text-yellow-100 text-xl 
+          smallestMobile:text-amber-500 smallestMobile:text-xl 
+          smallMobile:text-emerald-500 smallMobile:text-2xl
+          smallMedMobile:text-fuchsia-500 smallMediumMobile:text-3xl
+          regularMobile:text-lime-200 regularMobile:text-xl
+          tablet:text-purple-500 tablet:text-4xl
+          laptop:text-cyan-300 laptop:text-5xl
+          desktop:text-blue-500 desktop:text-5xl
+          largeScreen:text-rose-300
+          reallyLargeScreen:text-amber-500
+
 To start Client - npm run dev
 To start Server - nodemon
 

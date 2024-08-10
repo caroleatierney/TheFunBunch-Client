@@ -3,19 +3,19 @@ import LocalsNight from "../../assets/Locals-Night.jpeg"
 
 function About() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 container mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 smallMobile:pt-3 container mx-auto p-2">
       <div className="flex flex-col justify-center mx-auto text-center">
-        <h1 className="text-sky-800 font-margarine text-3xl p-4">
+        <h1 className="text-sky-800 font-margarine text-3xl desktop:text-5xl p-4">
           About Us
         </h1>
-        <p className="text-sky-800 font-margarine text-xl p-4">
+        <p className="text-sky-800 font-margarine text-xl p-4 smallMobile:p-0 desktop:text-3xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. A, excepturi
           ea. Neque pariatur placeat veritatis, accusamus inventore ipsa totam
           cum eius iure, illum ipsam, numquam maxime dolorum consequuntur
           repudiandae accusantium.
         </p>
       </div>
-      <div>
+      <div className="flex justify-center">
         <img
           className="w-full border-8 border-orange-200 mx-auto h-full"
           src={LocalsNight}
