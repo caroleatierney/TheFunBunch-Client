@@ -49,8 +49,8 @@ function DisplaySLBlogs() {
       ) : error ? (
         <p>{error}</p>
       ) : data ? ( // Check if data is defined
-        <div>
-          <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 lg:grid grid-cols-2 xl:grid-cols-4">
+
+          <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4">
             {data.blogArray &&
               data.blogArray.map(
                 (
@@ -65,7 +65,7 @@ function DisplaySLBlogs() {
                       to={`/UpdateSLBlogs/${data._id}/${item._id}`}
                     >
                       <div>
-                        <div className="flex justify-evenly">
+                        <div className="flex flex-col laptop:flex-row justify-center laptop:justify-evenly">
                           <div>
                             <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                               {item.blogName}
@@ -90,7 +90,7 @@ function DisplaySLBlogs() {
                 )
               )}
           </div>
-        </div>
+
       ) : (
         <p>No data found.</p>
       )}

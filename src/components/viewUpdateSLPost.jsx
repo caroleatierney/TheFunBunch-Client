@@ -82,134 +82,130 @@ function ViewUpdateSLPost() {
 
   // display form
   return (
-    <div>
+    <form className="flex flex-col justify-center" onSubmit={updatePost}>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
 
-      <div>
-        <form className="flex flex-col justify-center" onSubmit={updatePost}>
-          <div className="flex flex-row pt-10">
-            <div className="flex flex-col justify-center">
-              <img
-                className="w-5/6 mx-auto border-orange-200 border-8"
-                src={imageUrl}
-                alt={picName}
-              />
-            </div>
+      <div className="flex flex-col desktop:flex-row pt-10">
+        <div className="flex flex-col justify-center">
+          <img
+            className="w-5/6 mx-auto border-orange-200 border-8 mb-5"
+            src={imageUrl}
+            alt={picName}
+          />
+        </div>
 
-            <div className="flex flex-col justify-center w-full p-5">
-              <div className="flex justify-center">
-                <div className="flex flex-col tablet:flex-row items-center">
-                  <div>
-                    <label
-                      htmlFor="title"
-                      className="text-teal-500 font-margarine text-2xl"
-                    >
-                      Title
-                    </label>
-                    <input
-                      type="text"
-                      className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 
-                      style={{ width: `${Math.max(100, picName.length * 10)}px` }}
-                      focus:outline-none focus:ring-2 focus:ring-orange-300"
-                      onChange={(e) => setPicName(e.target.value)}
-                      value={picName}
-                      required
-                    />
-                  </div>
-
-                  <div className="flex flex-col tablet:flex-row items-center">
-                    <label
-                      htmlFor="date"
-                      className="text-teal-500 font-margarine text-2xl pl-10"
-                    >
-                      Date taken
-                    </label>
-                    <InputMask
-                      ref={dateInputRef}
-                      mask="99/99/9999"
-                      maskChar={null}
-                      className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 mt-4"
-                      placeholder="mm/dd/yyyy"
-                      onChange={(e) => setDate(e.target.value)}
-                      value={date}
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="Image"
-                    className="text-teal-500 font-margarine text-2xl pr-2"
-                  >
-                    Image URL from Imgur
-                  </label>
-                  <input
-                    type="text"
-                    className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-orange-300 mt-2"
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    value={imageUrl}
-                    required
-                  />
-                </div>
-              </div>
-
-              <label
-                className="text-teal-500 font-margarine text-2xl"
-                htmlFor="Description"
-              >
-                Description
-              </label>
-              <textarea
-                rows="5"
-                className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                type="text"
-                onChange={(e) => setDesc(e.target.value)}
-                value={desc}
-                required
-              />
-
-              <div className="flex justify-around p-8">
-                <NavLink to="/stLuciaPics">
-                  <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-                    👈 Back to St. Lucia Memories
-                  </Button>
-                </NavLink>
-
+        <div className="flex flex-col w-full p-5">
+          <div className="flex justify-center">
+            <div className="flex flex-col justify-center laptop:flex-row">
+              <div>
+                <label
+                  htmlFor="title"
+                  className="text-teal-500 font-margarine text-2xl pr-2"
+                >
+                  Title
+                </label>
+                {/* style={{ width: `${Math.max(100, picName.length * 10)}px` }} */}
                 <input
-                  className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-                  type="submit"
-                  value={submitted ? "Saving note..." : "💾 Save Updates"}
-                  disabled={submitted}
+                  type="text"
+                  className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md smallestMobile:mt-4 desktop:mt-0 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:mt-0 "
+                  onChange={(e) => setPicName(e.target.value)}
+                  value={picName}
+                  required
                 />
-
-                <NavLink to={`/addBlogSL/${postId}`}>
-                  <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-                    Add a Comment
-                  </Button>
-                </NavLink>
-
-                <NavLink to="/stLuciaPics">
-                  <Button
-                    onClick={removePost}
-                    className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-                  >
-                    ❌ Remove
-                  </Button>
-                </NavLink>
               </div>
-              <p className="text-center">
-                {submitted && (
-                  <div className="success-message">Note has been updated!</div>
-                )}
-              </p>
-              <DisplaySLBlogs postId={postId} />
+
+              <div>
+                <label
+                  htmlFor="date"
+                  className="text-teal-500 font-margarine text-2xl"
+                >
+                  Date taken
+                </label>
+                <InputMask
+                  ref={dateInputRef}
+                  mask="99/99/9999"
+                  maskChar={null}
+                  className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mx-1 laptop:mt-0 p-2"
+                  placeholder="mm/dd/yyyy"
+                  onChange={(e) => setDate(e.target.value)}
+                  value={date}
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="Image"
+                  className="text-teal-500 font-margarine text-2xl pr-2"
+                >
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 p-2"
+                  placeholder="mm/dd/yyyy"
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  value={imageUrl}
+                  required
+                />
+              </div>
             </div>
           </div>
-        </form>
+          <label
+            className="text-teal-500 font-margarine text-2xl"
+            htmlFor="Description"
+          >
+            Description
+          </label>
+          <textarea
+            rows="5"
+            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            type="text"
+            onChange={(e) => setDesc(e.target.value)}
+            value={desc}
+            required
+          />
+
+          <div className="flex flex-col laptop:flex-row items-center laptop:justify-around p-8">
+            <NavLink to="/stLuciaPics">
+              <Button className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100">
+                👈 Back to St. Lucia Memories
+              </Button>
+            </NavLink>
+
+            <input
+              className="bg-orange-200 text-bg-cyan-400 m-2 p-2 rounded hover:bg-emerald-100 text-sm"
+              type="submit"
+              value={submitted ? "Saving note..." : "💾 Save Updates"}
+              disabled={submitted}
+            />
+
+            <NavLink to={`/addBlogSL/${postId}`}>
+              <Button className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md">
+                Add a Comment
+              </Button>
+            </NavLink>
+
+            <NavLink to="/stLuciaPics">
+              <Button
+                onClick={removePost}
+                className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md"
+              >
+                ❌ Remove
+              </Button>
+            </NavLink>
+          </div>
+          <p className="text-center">
+            {submitted && (
+              <div className="success-message">Note has been updated!</div>
+            )}
+          </p>
+        </div>
       </div>
-    </div>
+      <DisplaySLBlogs postId={postId} />
+    </form>
   );
 }
 

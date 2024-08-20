@@ -44,9 +44,12 @@ function StLuciaPics() {
             <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2">
               Click on the photo to update it
             </h1>
-            <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 lg:grid grid-cols-2 xl:grid-cols-4">
+            <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 smallestMobile:grid smallestMobile:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
               {data.map((item) => (
-                <Card key={item._id} className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200">
+                <Card
+                  key={item._id}
+                  className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
+                >
                   <NavLink key={item._id} to={`/ViewUpdateSLPost/${item._id}`}>
                     <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                       {item.title}
