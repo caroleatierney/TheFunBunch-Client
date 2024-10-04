@@ -31,7 +31,8 @@ to get changes live, on client:
         npm run build
     ** It may take about 10 minutes to update
 
+Make sure you are in the right Repo - Client or Server to push changes 
+
 TO DO:
- add the blog part
+ add the blog part for Antigua
  Make responsive
- add a Sal page with a link to the video and picture of sign only if you can make it private
