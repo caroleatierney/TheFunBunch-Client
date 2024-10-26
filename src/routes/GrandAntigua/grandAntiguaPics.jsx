@@ -5,7 +5,6 @@ import { Card, Button } from "flowbite-react";
 
 function GrandAntiguaPics() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs`;
-
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
