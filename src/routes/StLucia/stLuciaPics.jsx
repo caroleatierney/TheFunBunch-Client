@@ -35,8 +35,8 @@ function StLuciaPics() {
       // <div
       //   className="h-[2000px]  bg-contain repeat-y bg-center"
       //   style={{ backgroundImage: `url(${Coral})` }}
-      // >
-        {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
+    //  >
+        <pre>{JSON.stringify(data, null, 2)} </pre>
         {isLoading ? (
           <p>Loading...</p>
         ) : error ? (
