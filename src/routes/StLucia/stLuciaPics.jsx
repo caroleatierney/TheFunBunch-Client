@@ -1,8 +1,8 @@
-// Displays all of the pictures from St. Lucia
-// TEST A CHANGE
+// Displays all of the pictures from St. Lucia test a change
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Button } from "flowbite-react";
+import Coral from "../src/assets/coral.jpeg";
 
 function StLuciaPics() {
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
@@ -31,7 +31,10 @@ function StLuciaPics() {
 
     return (
       // Returns all images
-      <div>
+      <div
+        className="h-[2000px]  bg-contain repeat-y bg-center"
+        style={{ backgroundImage: `url(${Coral})` }}
+      >
         {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
         {isLoading ? (
           <p>Loading...</p>

@@ -17,13 +17,12 @@ import GrandAntiguaPics    from "./routes/GrandAntigua/grandAntiguaPics";
 import AddPicsGrandAntigua from "./components/addPicsGrandAntigua";
 import ViewUpdateGAPost    from "./components/viewUpdateGAPost";
 import AddBlogGA           from "./components/addBlogGA";
-// import ViewUpdateGABlogs from "./components/viewUpdateGABlogs";
 
 function App() {
   return (
     <Router>
       <div
-        className="min-h-screen bg-cover bg-center"
+        className="h-[2000px]  bg-contain repeat-y bg-center"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
       >
         <Header />
