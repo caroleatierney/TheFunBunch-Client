@@ -3,7 +3,7 @@ import LocalsNight from "../../assets/Locals-Night.jpeg"
 
 function About() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 smallMobile:pt-3 container mx-auto p-2 max-w-7xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 smallMobile:pt-3 mx-auto p-2 bg-teal-300">
       <div className="flex flex-col justify-center mx-auto text-center">
         <h1 className="text-sky-800 font-margarine text-3xl desktop:text-5xl p-4">
           About Us
