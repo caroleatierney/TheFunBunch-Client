@@ -1,4 +1,4 @@
-// Displays all of the pictures from St. Lucia test a change
+// Displays all of the pictures from St. Lucia
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Button } from "flowbite-react";
@@ -31,7 +31,7 @@ function StLuciaPics() {
 
     return (
       // Returns all images
-      <div>
+      <div className=" bg-teal-300 min-h-screen">
         {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
         {isLoading ? (
           <p>Loading...</p>
@@ -45,6 +45,13 @@ function StLuciaPics() {
             <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2">
               Click on the photo to update it
             </h1>
+            <div className="flex flex-row justify-evenly">
+              <NavLink to="/addPicsStLucia">
+                <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+                  Add new photo ot video
+                </Button>
+              </NavLink>
+            </div>
             <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 smallestMobile:grid smallestMobile:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
               {data.map((item) => (
                 <Card
@@ -55,11 +62,22 @@ function StLuciaPics() {
                     <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                       {item.title}
                     </h3>
-                    <img
-                      className="max-w-full max-h-full object-contain"
-                      src={item.image}
-                      alt={item.title}
-                    />
+
+                    {item.image.match(/\.(mp4|webm|ogg)$/i) ? (
+                      <video
+                        className="max-w-full max-h-full object-contain"
+                        src={item.image}
+                        controls
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <img
+                        className="max-w-full max-h-full object-contain"
+                        src={item.image}
+                        alt={item.title}
+                      />
+                    )}
                   </NavLink>
                 </Card>
               ))}
@@ -69,7 +87,7 @@ function StLuciaPics() {
         <div className="flex justify-center">
           <NavLink to="/addPicsStLucia">
             <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-              Add new memory
+              Add new photo ot video
             </Button>
           </NavLink>
         </div>

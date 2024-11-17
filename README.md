@@ -34,5 +34,7 @@ to get changes live, on client:
 Make sure you are in the right Repo - Client or Server to push changes 
 
 TO DO:
- add the blog part for Antigua
- Make responsive
+Button on top and bottom
+Video button
+Make responsive
+Better images for photo pages

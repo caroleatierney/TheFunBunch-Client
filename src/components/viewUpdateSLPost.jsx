@@ -82,18 +82,29 @@ function ViewUpdateSLPost() {
 
   // display form
   return (
-    <form className="flex flex-col justify-center" onSubmit={updatePost}>
+    <form className="flex flex-col justify-center bg-teal-300 min-h-screen" onSubmit={updatePost}>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
 
       <div className="flex flex-col desktop:flex-row pt-10">
         <div className="flex flex-col justify-center">
-          <img
-            className="w-5/6 mx-auto border-orange-200 border-8 mb-5"
-            src={imageUrl}
-            alt={picName}
-          />
+          {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
+            <video
+              className="w-5/6 mx-auto border-orange-200 border-8 mb-5"
+              src={imageUrl}
+              alt={picName}
+              controls
+            >
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img
+              className="w-5/6 mx-auto border-orange-200 border-8 mb-5"
+              src={imageUrl}
+              alt={picName}
+            />
+          )}
         </div>
 
         <div className="flex flex-col w-full p-5">
@@ -142,6 +153,7 @@ function ViewUpdateSLPost() {
                 >
                   Image URL
                 </label>
+
                 <input
                   type="text"
                   className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 p-2"
@@ -171,7 +183,7 @@ function ViewUpdateSLPost() {
           <div className="flex flex-col laptop:flex-row items-center laptop:justify-around p-8">
             <NavLink to="/stLuciaPics">
               <Button className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100">
-                👈 Back to St. Lucia Memories
+                👈 Back to St. Lucia
               </Button>
             </NavLink>
 
@@ -199,7 +211,7 @@ function ViewUpdateSLPost() {
           </div>
           <p className="text-center">
             {submitted && (
-              <div className="success-message">Note has been updated!</div>
+              <div className="success-message">Page has been updated!</div>
             )}
           </p>
         </div>

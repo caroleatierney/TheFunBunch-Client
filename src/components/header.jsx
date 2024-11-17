@@ -4,7 +4,7 @@ import { Navbar, Button } from "flowbite-react";
 
 function Header() {
   return (
-    <header className="flex smallMobile:flex-col desktop:flex-row items-center justify-evenly px-4 py-2">
+    <header className="flex smallMobile:flex-col desktop:flex-row items-center justify-evenly px-4 py-2 bg-teal-300 min-h-screen">
       <Navbar className="bg-transparent">
         <div>
           <h1
