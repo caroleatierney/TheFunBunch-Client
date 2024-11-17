@@ -110,14 +110,13 @@ function UpdateSLBlogs() {
 
   // display form
   return (
-    <div>
+    <div className=" bg-teal-300 min-h-screen">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         Update a Comment
       </h1>
-
       <form onSubmit={updateBlog}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
           <label
@@ -140,8 +139,8 @@ function UpdateSLBlogs() {
           >
             Your Comments
           </label>
-          <input
-            type="text"
+          <textarea
+            rows="5"
             className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setComments(e.target.value)}
             value={comments}
@@ -165,7 +164,7 @@ function UpdateSLBlogs() {
               to="/stLuciaPics"
               className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
             >
-              👈 Back to St. Lucia Memories
+              👈 Back to St. Lucia
             </Link>
 
             <input

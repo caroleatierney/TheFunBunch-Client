@@ -42,13 +42,13 @@ function StLuciaPics() {
             <h1 className="text-center text-teal-500 font-margarine text-3xl pt-2">
               St. Lucia
             </h1>
-            <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2">
-              Click on the photo to update it
+            <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2 pb-2">
+              Click on a photo to update it
             </h1>
             <div className="flex flex-row justify-evenly">
               <NavLink to="/addPicsStLucia">
                 <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-                  Add new photo ot video
+                  Add new photo or video
                 </Button>
               </NavLink>
             </div>
@@ -87,7 +87,7 @@ function StLuciaPics() {
         <div className="flex justify-center">
           <NavLink to="/addPicsStLucia">
             <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-              Add new photo ot video
+              Add new photo or video
             </Button>
           </NavLink>
         </div>

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import BackgroundImage     from "./assets/background.jpeg";
+// import BackgroundImage     from "./assets/background.jpeg";
 import HomeScreen          from "./routes/Home/homeScreen";
 import About               from "./routes/About/about";
 
@@ -22,8 +22,8 @@ function App() {
   return (
     <Router>
       <div
-        className="h-[2000px]  bg-contain repeat-y bg-center"
-        style={{ backgroundImage: `url(${BackgroundImage})` }}
+        // className="h-[2000px]  bg-contain repeat-y bg-center"
+        // style={{ backgroundImage: `url(${BackgroundImage})` }}
       >
         <Header />
         <Routes>

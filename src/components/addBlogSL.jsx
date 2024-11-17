@@ -117,7 +117,7 @@ const handleRatingChange = (e) => {
   };
 
   return (
-    <div>
+    <div className=" bg-teal-300 min-h-screen">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
@@ -125,7 +125,9 @@ const handleRatingChange = (e) => {
         Add a new Comment
       </h1>
 
-      <form onSubmit={addBlogSL}>
+      <form 
+          className=" bg-teal-300 min-h-screen"
+          onSubmit={addBlogSL}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
           <label
             htmlFor="Blog Name"
