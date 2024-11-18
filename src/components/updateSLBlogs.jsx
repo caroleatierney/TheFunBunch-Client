@@ -53,37 +53,46 @@ function UpdateSLBlogs() {
       const data = await response.json();
       const blogArray = data.blogArray || [];
 
-      const newBlog = {};
-      newBlog.blogName = blogName;
-      newBlog.blogDate = blogDate;
-      newBlog.comments = comments;
-      newBlog.rating = rating;
+      // Find the index of the blog post to update
+      const blogIndex = blogArray.findIndex((blog) => blog._id === itemId);
 
-      blogArray.push(newBlog);
+      if (blogIndex !== -1) {
+        // Update the existing blog post
+        blogArray[blogIndex] = {
+          ...blogArray[blogIndex],
+          blogName: blogName,
+          blogDate: blogDate,
+          comments: comments,
+          rating: rating,
+        };
 
-      const putData = await fetch(baseUrl, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          blogArray: blogArray,
-        }),
-      });
+        const putData = await fetch(baseUrl, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            blogArray: blogArray,
+          }),
+        });
 
-      if (putData.ok) {
-        // set form fields to blank after update
-        setBlogName("");
-        setComments("");
-        setRating("");
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 2000);
-        navigate(`/viewUpdateSLPost/${postId}`);
+        if (putData.ok) {
+          // set form fields to blank after update
+          setBlogName("");
+          setComments("");
+          setRating("");
+          setSubmitted(true);
+          setTimeout(() => setSubmitted(false), 2000);
+          navigate(`/viewUpdateSLPost/${postId}`);
+        } else {
+          console.log(
+            "Failed to update data. Server response status:",
+            putData.status
+          );
+          console.log("Server response message:", putData.statusText);
+        }
       } else {
-        console.log(
-          "Failed to update data. Server response status:",
-          putData.status
-        );
-        console.log("Server response message:", putData.statusText);
+        console.log("Blog post not found");
       }
+
     } catch (error) {
       console.log(error);
     }

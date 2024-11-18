@@ -40,6 +40,14 @@ function DisplaySLBlogs() {
     fetchData();
   }, [baseUrl, postId ]);
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  }
+
   return (
     // Returns all blogs
     <div>
@@ -49,48 +57,47 @@ function DisplaySLBlogs() {
       ) : error ? (
         <p>{error}</p>
       ) : data ? ( // Check if data is defined
-
-          <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4">
-            {data.blogArray &&
-              data.blogArray.map(
-                (
-                  item // Check if data.blogArray exists before mapping
-                ) => (
-                  <Card
+        <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4">
+          {data.blogArray &&
+            data.blogArray.map(
+              (
+                item // Check if data.blogArray exists before mapping
+              ) => (
+                <Card
+                  key={item._id}
+                  className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
+                >
+                  <NavLink
                     key={item._id}
-                    className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
+                    to={`/UpdateSLBlogs/${data._id}/${item._id}`}
                   >
-                    <NavLink
-                      key={item._id}
-                      to={`/UpdateSLBlogs/${data._id}/${item._id}`}
-                    >
-                      <div>
-                        <div className="flex flex-col laptop:flex-row justify-center laptop:justify-evenly">
-                          <div>
-                            <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                              {item.blogName}
-                            </h3>
-                          </div>
-                          <div>
-                            <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                              {item.blogDate}
-                            </h3>
-                          </div>
+                    <div>
+                      <div className="flex flex-col justify-center laptop:justify-evenly">
+                        <div>
+                          <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                            Commentor: {item.blogName}
+                          </h3>
                         </div>
-                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                          {item.comments}
-                        </h3>
-
-                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                          {item.rating}
-                        </h3>
+                        <div>
+                          <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                            Date: {formatDate(item.blogDate)}
+                          </h3>
+                        </div>
                       </div>
-                    </NavLink>
-                  </Card>
-                )
-              )}
-          </div>
 
+                      <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                        Comments: {item.comments}
+                      </h3>
+
+                      <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                        Rating: {item.rating}
+                      </h3>
+                    </div>
+                  </NavLink>
+                </Card>
+              )
+            )}
+        </div>
       ) : (
         <p>No data found.</p>
       )}
