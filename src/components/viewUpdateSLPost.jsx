@@ -92,103 +92,115 @@ function ViewUpdateSLPost() {
         St. Lucia
       </h1>
 
-      <div className="flex flex-col desktop:flex-row pt-10">
-        <div className="flex flex-col justify-center">
-          <img
-            className="w-5/6 mx-auto border-orange-200 border-8 mb-5"
-            src={imageUrl}
-            alt={picName}
-          />
+      <div className="flex flex-row pt-10">
+        <div className="justify-center flex w-1/3">
+          {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
+            <video
+              className="max-w-full max-h-full object-contain"
+              src={imageUrl}
+              alt={picName}
+              controls
+            >
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img
+              className="max-w-full max-h-full object-contain"
+              src={imageUrl}
+              alt={picName}
+            />
+          )}
         </div>
 
-        <div className="flex flex-col w-full p-5">
-          <div className="flex justify-center">
-            <div className="flex flex-col justify-center laptop:flex-row">
-              <div>
-                <label
-                  htmlFor="title"
-                  className="text-teal-500 font-margarine text-2xl pr-2"
-                >
-                  Title
-                </label>
-                {/* style={{ width: `${Math.max(100, picName.length * 10)}px` }} */}
-                <input
-                  type="text"
-                  className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md smallestMobile:mt-4 desktop:mt-0 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:mt-0 "
-                  onChange={(e) => setPicName(e.target.value)}
-                  value={picName}
-                  required
-                />
-              </div>
+        <div className="flex flex-col items-center w-2/3 mt-14">
+          <div className="flex flex-col items-center ">
+            <div>
+              <label
+                htmlFor="title"
+                className="text-teal-500 font-margarine text-2xl pr-2"
+              >
+                Title
+              </label>
+              {/* style={{ width: `${Math.max(100, picName.length * 10)}px` }} */}
+              <input
+                type="text"
+                className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md smallestMobile:mt-4 desktop:mt-0 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:mt-0 mb-8"
+                onChange={(e) => setPicName(e.target.value)}
+                value={picName}
+                required
+              />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="date"
-                  className="text-teal-500 font-margarine text-2xl"
-                >
-                  Date taken
-                </label>
-                <InputMask
-                  ref={dateInputRef}
-                  mask="99/99/9999"
-                  maskChar={null}
-                  className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mx-1 laptop:mt-0 p-2"
-                  placeholder="mm/dd/yyyy"
-                  onChange={(e) => setDate(e.target.value)}
-                  value={date}
-                  required
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="date"
+                className="text-teal-500 font-margarine text-2xl pr-4"
+              >
+                Date taken
+              </label>
+              <InputMask
+                ref={dateInputRef}
+                mask="99/99/9999"
+                maskChar={null}
+                className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mx-1 laptop:mt-0 mb-8"
+                placeholder="mm/dd/yyyy"
+                onChange={(e) => setDate(e.target.value)}
+                value={date}
+                required
+              />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="Image"
-                  className="text-teal-500 font-margarine text-2xl pr-2"
-                >
-                  Image URL
-                </label>
-                <input
-                  type="text"
-                  className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 p-2"
-                  placeholder="mm/dd/yyyy"
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  value={imageUrl}
-                  required
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="Image"
+                className="text-teal-500 font-margarine text-2xl pr-4"
+              >
+                Image URL
+              </label>
+              <input
+                type="text"
+                className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 mb-8"
+                placeholder="mm/dd/yyyy"
+                onChange={(e) => setImageUrl(e.target.value)}
+                value={imageUrl}
+                required
+              />
             </div>
           </div>
-          <label
-            className="text-teal-500 font-margarine text-2xl"
-            htmlFor="Description"
-          >
-            Description
-          </label>
-          <textarea
-            rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            type="text"
-            onChange={(e) => setDesc(e.target.value)}
-            value={desc}
-            required
-          />
+
+          <div className="flex items-center w-5/6">
+            <label
+              className="text-teal-500 font-margarine text-2xl pr-4"
+              htmlFor="Description"
+            >
+              Description
+            </label>
+            <textarea
+              rows="5"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-3/4"
+              type="text"
+              onChange={(e) => setDesc(e.target.value)}
+              value={desc}
+              required
+            />
+          </div>
 
           <div className="flex flex-col laptop:flex-row items-center laptop:justify-around p-8">
             <NavLink to="/stLuciaPics">
-              <Button className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100">
-                👈 Back to St. Lucia Memories
+              <Button className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100">
+                👈 St. Lucia
               </Button>
             </NavLink>
 
             <input
-              className="bg-orange-200 text-bg-cyan-400 m-2 p-2 rounded hover:bg-emerald-100 text-sm"
+              className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 p-2 rounded hover:bg-emerald-100 text-sm"
               type="submit"
               value={submitted ? "Saving note..." : "💾 Save Updates"}
               disabled={submitted}
             />
 
             <NavLink to={`/addBlogSL/${postId}`}>
-              <Button className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md">
+              <Button className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md">
                 Add a Comment
               </Button>
             </NavLink>
@@ -196,7 +208,7 @@ function ViewUpdateSLPost() {
             <NavLink to="/stLuciaPics">
               <Button
                 onClick={removePost}
-                className="bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md"
+                className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md"
               >
                 ❌ Remove
               </Button>

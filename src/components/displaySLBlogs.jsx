@@ -5,7 +5,9 @@ import { Card, Button } from "flowbite-react";
 
 function DisplaySLBlogs() {
   const { postId } = useParams();
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs/${postId}`;
+  const baseUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/api/stluciablogs/${postId}`;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,7 +40,7 @@ function DisplaySLBlogs() {
       }
     };
     fetchData();
-  }, [baseUrl, postId ]);
+  }, [baseUrl, postId]);
 
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -57,9 +59,9 @@ function DisplaySLBlogs() {
       ) : error ? (
         <p>{error}</p>
       ) : data ? ( // Check if data is defined
-        <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4">
-          {data.blogArray &&
-            data.blogArray.map(
+        <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-5">
+          {
+            data.blogArray && data.blogArray.map(
               (
                 item // Check if data.blogArray exists before mapping
               ) => (
@@ -71,24 +73,22 @@ function DisplaySLBlogs() {
                     key={item._id}
                     to={`/UpdateSLBlogs/${data._id}/${item._id}`}
                   >
+                  <div className="flex flex-col justify-center laptop:justify-evenly">
                     <div>
-                      <div className="flex flex-col justify-center laptop:justify-evenly">
-                        <div>
-                          <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                      <div>
+                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                             Commentor: {item.blogName}
                           </h3>
-                        </div>
-                        <div>
-                          <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
-                            Date: {formatDate(item.blogDate)}
-                          </h3>
-                        </div>
                       </div>
-
+                      <div>
+                        <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
+                          Date: {formatDate(item.blogDate)}
+                        </h3>
+                      </div>
+                    </div>
                       <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                         Comments: {item.comments}
                       </h3>
-
                       <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                         Rating: {item.rating}
                       </h3>
