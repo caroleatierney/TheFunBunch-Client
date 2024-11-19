@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Button } from "flowbite-react";
-// import Coral from "../src/assets/coral.jpeg";
+// import Coral from "../src/assets/coral.jpeg"; ;szhg;h;hb;awht
 
 function StLuciaPics() {
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
