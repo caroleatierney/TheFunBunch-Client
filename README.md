@@ -20,7 +20,8 @@ npm run preview: The vite preview command will boot up a local static web server
 npm run preview -- --port 8080
 
 to get changes live, on client:
-    1) ensure css is always updated in the dist folder on Client: npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
+    1) ensure css is always updated in the dist folder on Client:
+        npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
 
     2) git commands
             git add -A

@@ -84,142 +84,142 @@ function ViewUpdateSLPost() {
 
   // display form
   return (
-    <form
-      className="flex flex-col justify-center bg-teal-300 min-h-screen"
-      onSubmit={updatePost}
-    >
-      <h1 className="text-center text-teal-500 font-margarine text-6xl py-3">
+    <form className="flex flex-col bg-teal-300" onSubmit={updatePost}>
+      <h1 className="text-center text-teal-500 font-margarine text-sm tablet:text-3xl laptop:text-6xl py-3">
         St. Lucia
       </h1>
-
-      <div className="flex flex-row pt-10">
-        <div className="justify-center flex w-1/3">
-          {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
-            <video
-              className="max-w-full max-h-full object-contain"
-              src={imageUrl}
-              alt={picName}
-              controls
-            >
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <img
-              className="max-w-full max-h-full object-contain"
-              src={imageUrl}
-              alt={picName}
-            />
-          )}
-        </div>
-
-        <div className="flex flex-col items-center w-2/3 mt-14">
-          <div className="flex flex-col items-center ">
-            <div>
-              <label
-                htmlFor="title"
-                className="text-teal-500 font-margarine text-2xl pr-2"
+      <div className="flex flex-col justify-center min-h-screen bg-teal-300">
+        <div className="flex flex-col items-center desktop:flex-row">
+          <div className="justify-center flex m-10 laptop:w-2/3 desktop:w-1/2">
+            {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
+              <video
+                className="max-w-full max-h-full object-cover"
+                src={imageUrl}
+                alt={picName}
+                controls
               >
-                Title
-              </label>
-              {/* style={{ width: `${Math.max(100, picName.length * 10)}px` }} */}
-              <input
-                type="text"
-                className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md smallestMobile:mt-4 desktop:mt-0 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:mt-0 mb-8"
-                onChange={(e) => setPicName(e.target.value)}
-                value={picName}
-                required
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img
+                className="max-w-full max-h-full object-contain"
+                src={imageUrl}
+                alt={picName}
               />
-            </div>
-
-            <div>
-              <label
-                htmlFor="date"
-                className="text-teal-500 font-margarine text-2xl pr-4"
-              >
-                Date taken
-              </label>
-              <InputMask
-                ref={dateInputRef}
-                mask="99/99/9999"
-                maskChar={null}
-                className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mx-1 laptop:mt-0 mb-8"
-                placeholder="mm/dd/yyyy"
-                onChange={(e) => setDate(e.target.value)}
-                value={date}
-                required
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="Image"
-                className="text-teal-500 font-margarine text-2xl pr-4"
-              >
-                Image URL
-              </label>
-              <input
-                type="text"
-                className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 mb-8"
-                placeholder="mm/dd/yyyy"
-                onChange={(e) => setImageUrl(e.target.value)}
-                value={imageUrl}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="flex items-center w-5/6">
-            <label
-              className="text-teal-500 font-margarine text-2xl pr-4"
-              htmlFor="Description"
-            >
-              Description
-            </label>
-            <textarea
-              rows="5"
-              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-3/4"
-              type="text"
-              onChange={(e) => setDesc(e.target.value)}
-              value={desc}
-              required
-            />
-          </div>
-
-          <div className="flex flex-col laptop:flex-row items-center laptop:justify-around p-8">
-            <NavLink to="/stLuciaPics">
-              <Button className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100">
-                👈 St. Lucia
-              </Button>
-            </NavLink>
-
-            <input
-              className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 p-2 rounded hover:bg-emerald-100 text-sm"
-              type="submit"
-              value={submitted ? "Saving note..." : "💾 Save Updates"}
-              disabled={submitted}
-            />
-
-            <NavLink to={`/addBlogSL/${postId}`}>
-              <Button className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md">
-                Add a Comment
-              </Button>
-            </NavLink>
-
-            <NavLink to="/stLuciaPics">
-              <Button
-                onClick={removePost}
-                className="w-40 h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-md"
-              >
-                ❌ Remove
-              </Button>
-            </NavLink>
-          </div>
-          <p className="text-center">
-            {submitted && (
-              <div className="success-message">Note has been updated!</div>
             )}
-          </p>
-          <DisplaySLBlogs postId={postId} />
+          </div>
+
+          <div className="flex flex-col items-center laptop:w-1/3 mt-14 desktop:mt-0 desktop:w-1/2">
+            <div className="flex flex-col items-center ">
+              <div className="flex flex-col tablet:flex-row desktop:flex-col items-center">
+                <label
+                  htmlFor="title"
+                  className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl tablet:pr-2"
+                >
+                  Title
+                </label>
+                <input
+                  type="text"
+                  style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
+                  className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 text-center rounded-md smallestMobile:mt-4 desktop:mt-0 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:mt-0 mb-8 desktop:w-full"
+                  onChange={(e) => setPicName(e.target.value)}
+                  value={picName}
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col tablet:flex-row desktop:flex-col items-center">
+                <label
+                  htmlFor="date"
+                  className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl pr-4"
+                >
+                  Date taken
+                </label>
+                <InputMask
+                  ref={dateInputRef}
+                  mask="99/99/9999"
+                  maskChar={null}
+                  style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
+                  className="text-center text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mx-1 laptop:mt-0 mb-8"
+                  placeholder="mm/dd/yyyy"
+                  onChange={(e) => setDate(e.target.value)}
+                  value={date}
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col tablet:flex-row desktop:flex-col items-center">
+                <label
+                  htmlFor="Image"
+                  className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl pr-4"
+                >
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
+                  className="text-center text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-4 laptop:mt-0 mb-8 desktop:px-0 "
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  value={imageUrl}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center w-5/6 flex-col tablet:flex-row desktop:flex-col">
+              <label
+                className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl pr-4"
+                htmlFor="Description"
+              >
+                Description
+              </label>
+              <textarea
+                rows="5"
+                style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
+                className="text-teal-500 font-margarine smallestMobile:text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-3/4"
+                type="text"
+                onChange={(e) => setDesc(e.target.value)}
+                value={desc}
+                required
+              />
+            </div>
+
+            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-x-8 align-content:content-evenly items-center m-5">
+              <NavLink to="/stLuciaPics">
+                <Button className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center">
+                  👈 St. Lucia
+                </Button>
+              </NavLink>
+
+              <input
+                className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+                type="submit"
+                value={submitted ? "Saving note..." : "💾     Save Updates"}
+                disabled={submitted}
+              />
+
+              <NavLink to={`/addBlogSL/${postId}`}>
+                <Button className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center">
+                  Add a Comment
+                </Button>
+              </NavLink>
+
+              <NavLink to="/stLuciaPics">
+                <Button
+                  onClick={removePost}
+                  className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+                >
+                  ❌ Remove
+                </Button>
+              </NavLink>
+            </div>
+            <p className="text-center">
+              {submitted && (
+                <div className="success-message">Note has been updated!</div>
+              )}
+            </p>
+            <DisplaySLBlogs postId={postId} />
+          </div>
         </div>
       </div>
     </form>
