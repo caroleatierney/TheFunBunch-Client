@@ -37,4 +37,8 @@ Make sure you are in the right Repo - Client or Server to push changes
 TO DO:
 
 Make responsive
-Better images for photo pages
+Better images for photo pages - all the same size?
+Scroll restoration
+back up
+Delete password
+

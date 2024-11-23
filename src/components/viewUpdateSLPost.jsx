@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 import InputMask from "react-input-mask";
@@ -8,6 +8,7 @@ import DisplaySLBlogs from "./displaySLBlogs";
 function ViewUpdateSLPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const baseUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/api/stluciablogs/${postId}`;
@@ -41,6 +42,22 @@ function ViewUpdateSLPost() {
     };
     fetchData();
   }, []);
+
+  // Restore scroll position if available
+  useEffect(() => {
+    if (location.state && location.state.scrollPosition) {
+      console.log("Restoring scroll position:", location.state.scrollPosition);
+      window.scrollTo(0, location.state.scrollPosition);
+    }
+  }, [location]);
+
+  const handleBackToPics = () => {
+    // Capture current scroll position
+    const scrollPosition = window.scrollY;
+    console.log("Captured scroll position:", scrollPosition);
+    // Navigate back with scroll position in state
+    navigate("/stLuciaPics", { state: { scrollPosition } });
+  };
 
   const updatePost = async (e) => {
     e.preventDefault();
@@ -185,14 +202,13 @@ function ViewUpdateSLPost() {
             </div>
 
             <div className="grid grid-cols-1 desktop:grid-cols-2 gap-x-8 content-center m-5">
-              <NavLink to="/stLuciaPics">
-                <Button
-                  className="flex items-center justify-center w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
-                  style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
-                >
-                  👈 St. Lucia
-                </Button>
-              </NavLink>
+              <Button
+                onClick={handleBackToPics}
+                className="flex items-center justify-center w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
+                style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
+              >
+                👈 St. Lucia
+              </Button>
 
               <Button
                 type="submit"
@@ -227,7 +243,7 @@ function ViewUpdateSLPost() {
                 <div className="success-message">Note has been updated!</div>
               )}
             </p>
-            <DisplaySLBlogs postId={postId} />
+            <DisplaySLBlogs />
           </div>
         </div>
       </div>

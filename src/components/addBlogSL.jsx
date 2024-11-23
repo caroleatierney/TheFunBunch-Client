@@ -128,8 +128,8 @@ const handleRatingChange = (e) => {
       </h1>
 
       <form className=" bg-teal-300 flex flex-col" onSubmit={addBlogSL}>
-        <div className="flex flex-col w-1/4 mx-auto text-center">
-          <div className="flex flex-col items-center desktop:flex-row">
+        <div className="flex flex-col mx-auto text-center w-5/6">
+          <div className="flex flex-col items-center ">
             <label
               htmlFor="Blog Name"
               className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
@@ -181,22 +181,19 @@ const handleRatingChange = (e) => {
               <p className="text-red-500 text-sm mt-1">{ratingError}</p>
             )}
 
-            <div className="grid grid-cols-1 gap-y-4 content-center m-5 w-full max-w-md mx-auto">
-              <NavLink to="/stLuciaPics" className="w-full sm:w-auto">
-                <Button
-                  className="flex items-center justify-center w-full h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
-                  style={{
-                    width: `${Math.max(10, newBlogName.length + 5)}ch`,
-                  }}
-                >
-                  👈 St. Lucia
+            <div className="grid grid-cols-2 display-flex flex-row justify-content:center align-items:center mt-5 w-full max-w-2xl mx-auto">
+              <NavLink
+                to={`/viewUpdateSLPost/${postId}`}
+                className="w-full flex justify-center"
+              >
+                <Button className="w-auto h-auto flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs">
+                  👈 Photo
                 </Button>
               </NavLink>
 
               <Button
                 type="submit"
-                className="flex items-center justify-center w-full h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
-                style={{ width: `${Math.max(10, newBlogName.length + 11)}ch` }}
+                className="w-full flex justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
                 disabled={submitted}
               >
                 {submitted ? "Saving comment..." : "💾 Save Comments"}

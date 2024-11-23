@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Button } from "flowbite-react";
+import { useLocation } from 'react-router-dom';
 // import Coral from "../src/assets/coral.jpeg"; ;szhg;h;hb;awht
 
 function StLuciaPics() {
+    const location = useLocation();
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +30,12 @@ function StLuciaPics() {
         fetchData();
     }, []);
 
+  useEffect(() => {
+    // Restore scroll position if available
+    if (location.state && location.state.scrollPosition !== undefined) {
+      window.scrollTo(0, location.state.scrollPosition);
+    }
+  }, [location]);
 
     return (
       // Returns all images
