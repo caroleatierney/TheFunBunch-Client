@@ -184,22 +184,30 @@ function ViewUpdateSLPost() {
               />
             </div>
 
-            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-x-8 align-content:content-evenly items-center m-5">
+            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-x-8 content-center m-5">
               <NavLink to="/stLuciaPics">
-                <Button className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center">
+                <Button
+                  className="flex items-center justify-center w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
+                  style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
+                >
                   👈 St. Lucia
                 </Button>
               </NavLink>
 
-              <input
-                className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+              <Button
                 type="submit"
-                value={submitted ? "Saving note..." : "💾     Save Updates"}
+                className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
+                style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
                 disabled={submitted}
-              />
+              >
+                {submitted ? "Saving note..." : "💾 Save Updates"}
+              </Button>
 
               <NavLink to={`/addBlogSL/${postId}`}>
-                <Button className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center">
+                <Button
+                  className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
+                  style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
+                >
                   Add a Comment
                 </Button>
               </NavLink>
@@ -208,6 +216,7 @@ function ViewUpdateSLPost() {
                 <Button
                   onClick={removePost}
                   className="w-full w-30 h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+                  style={{ width: `${Math.max(10, imageUrl.length - 10)}ch` }}
                 >
                   ❌ Remove
                 </Button>

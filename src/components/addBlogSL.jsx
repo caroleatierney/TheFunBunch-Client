@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "flowbite-react";
+import { NavLink } from "react-router-dom";
 
 function AddBlogSL() {
   const { postId } = useParams();
@@ -121,79 +123,91 @@ const handleRatingChange = (e) => {
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
+      <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
         Add a new Comment
       </h1>
 
-      <form 
-          className=" bg-teal-300 min-h-screen"
-          onSubmit={addBlogSL}>
+      <form className=" bg-teal-300 flex flex-col" onSubmit={addBlogSL}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
-          <label
-            htmlFor="Blog Name"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Your Name
-          </label>
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewBlogName(e.target.value)}
-            value={newBlogName}
-            required
-          />
-
-          <label
-            htmlFor="Comments"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Your Comments
-          </label>
-          <textarea
-            type="text"
-            rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewComments(e.target.value)}
-            value={newComments}
-            required
-          />
-          <label
-            htmlFor="Rating"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Rating (1-10)
-          </label>
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={handleRatingChange}
-            value={newRating}
-            required
-          />
-          {ratingError && (
-            <p className="text-red-500 text-sm mt-1">{ratingError}</p>
-          )}
-          <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
-            <Link
-              to="/stLuciaPics"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+          <div className="flex flex-col items-center desktop:flex-row">
+            <label
+              htmlFor="Blog Name"
+              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
             >
-              👈 back
-            </Link>
-
+              Your Name
+            </label>
             <input
-              type="submit"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              value={submitted ? "Saving comment..." : "💾 Save Comment"}
-              disabled={submitted}
+              type="text"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+              onChange={(e) => setNewBlogName(e.target.value)}
+              value={newBlogName}
+              required
             />
-          </div>
 
-          <p className="text-center">
-            {submitted && (
-              <div className="success-message">Comment has been saved!</div>
+            <label
+              htmlFor="Comments"
+              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            >
+              Your Comments
+            </label>
+            <textarea
+              type="text"
+              rows="5"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              onChange={(e) => setNewComments(e.target.value)}
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+              value={newComments}
+              required
+            />
+            <label
+              htmlFor="Rating"
+              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            >
+              Rating (1-10)
+            </label>
+            <input
+              type="text"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+              onChange={handleRatingChange}
+              value={newRating}
+              required
+            />
+            {ratingError && (
+              <p className="text-red-500 text-sm mt-1">{ratingError}</p>
             )}
-          </p>
+
+            <div className="grid grid-cols-1 gap-y-4 content-center m-5 w-full max-w-md mx-auto">
+              <NavLink to="/stLuciaPics" className="w-full sm:w-auto">
+                <Button
+                  className="flex items-center justify-center w-full h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
+                  style={{
+                    width: `${Math.max(10, newBlogName.length + 5)}ch`,
+                  }}
+                >
+                  👈 St. Lucia
+                </Button>
+              </NavLink>
+
+              <Button
+                type="submit"
+                className="flex items-center justify-center w-full h-8 tablet:w-auto desktop:w-40 desktop:h-15 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
+                style={{ width: `${Math.max(10, newBlogName.length + 11)}ch` }}
+                disabled={submitted}
+              >
+                {submitted ? "Saving comment..." : "💾 Save Comments"}
+              </Button>
+            </div>
+            <p className="text-center">
+              {submitted && (
+                <div className="success-message">Comment has been saved!</div>
+              )}
+            </p>
+          </div>
         </div>
       </form>
     </div>
