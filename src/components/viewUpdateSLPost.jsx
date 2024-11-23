@@ -54,7 +54,7 @@ function ViewUpdateSLPost() {
   const handleBackToPics = () => {
     // Capture current scroll position
     const scrollPosition = window.scrollY;
-    console.log("Captured scroll position:", scrollPosition);
+    
     // Navigate back with scroll position in state
     navigate("/stLuciaPics", { state: { scrollPosition } });
   };
@@ -106,7 +106,7 @@ function ViewUpdateSLPost() {
         St. Lucia
       </h1>
       <div className="flex flex-col justify-center min-h-screen bg-teal-300">
-        <div className="flex flex-col items-center desktop:flex-row">
+        <div className="flex flex-col items-center desktop:flex-row desktop:items-start">
           <div className="justify-center flex m-10 laptop:w-2/3 desktop:w-1/2">
             {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
               <video
@@ -183,7 +183,7 @@ function ViewUpdateSLPost() {
               </div>
             </div>
 
-            <div className="flex items-center w-5/6 flex-col tablet:flex-row desktop:flex-col">
+            <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col">
               <label
                 className="text-teal-500 font-margarine smallestMobile:text-sm tablet:text-xl laptop:text-2xl pr-4"
                 htmlFor="Description"
@@ -192,8 +192,8 @@ function ViewUpdateSLPost() {
               </label>
               <textarea
                 rows="5"
-                style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
-                className="text-teal-500 font-margarine smallestMobile:text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-3/4"
+                // style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
+                className="text-teal-500 font-margarine smallestMobile:text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full mr-10"
                 type="text"
                 onChange={(e) => setDesc(e.target.value)}
                 value={desc}
