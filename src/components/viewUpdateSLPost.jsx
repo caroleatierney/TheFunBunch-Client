@@ -193,7 +193,7 @@ function ViewUpdateSLPost() {
               <textarea
                 rows="5"
                 // style={{ width: `${Math.max(10, imageUrl.length - 3)}ch` }}
-                className="text-teal-500 font-margarine smallestMobile:text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full mr-10"
+                className="text-teal-500 font-margarine smallestMobile:text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full w-5/6 desktop:mr-10"
                 type="text"
                 onChange={(e) => setDesc(e.target.value)}
                 value={desc}

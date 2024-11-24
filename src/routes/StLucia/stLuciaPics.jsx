@@ -60,7 +60,13 @@ function StLuciaPics() {
                 </Button>
               </NavLink>
             </div>
-            <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 smallestMobile:grid smallestMobile:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
+            {/* <div className="bg-card hover:bg-card-hover rounded-md m-1 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-4">
+              {data.map((item) => (
+                <Card
+                  key={item._id}
+                  className="max-w-sm desktop:max-w-4xl m-1 bg-white bg-opacity-40 border-8 border-orange-200 h-96 desktop:max-h-full"
+                > */}
+            <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-4">
               {data.map((item) => (
                 <Card
                   key={item._id}
@@ -73,7 +79,7 @@ function StLuciaPics() {
 
                     {item.image.match(/\.(mp4|webm|ogg)$/i) ? (
                       <video
-                        className="max-w-full max-h-full object-contain"
+                        className="w-full h-64 object-cover"
                         src={item.image}
                         controls
                       >
@@ -81,7 +87,7 @@ function StLuciaPics() {
                       </video>
                     ) : (
                       <img
-                        className="max-w-full max-h-full object-contain"
+                        className="w-full h-64 object-cover"
                         src={item.image}
                         alt={item.title}
                       />
