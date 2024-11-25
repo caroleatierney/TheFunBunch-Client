@@ -5,6 +5,8 @@ import { Button } from "flowbite-react";
 import InputMask from "react-input-mask";
 import DisplaySLBlogs from "./displaySLBlogs";
 
+const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
+
 function ViewUpdateSLPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
@@ -89,6 +91,17 @@ function ViewUpdateSLPost() {
   const removePost = async (e) => {
     e.preventDefault();
 
+    // only admin can delete
+    alert('Enter admin password to delete')
+    let password = prompt("Please enter the admin password");
+
+    if (password == DELETE_PW) {
+        alert("Photo content will be deleted");
+    } else {
+        alert("You do not have authority, contact the admin");
+        return
+    }
+
     try {
       const response = await fetch(baseUrl, {
         method: "DELETE",
@@ -131,7 +144,7 @@ function ViewUpdateSLPost() {
               <div className="flex flex-col tablet:flex-row desktop:flex-col items-center">
                 <label
                   htmlFor="title"
-                  className="text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl tablet:pr-2"
+                  className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl tablet:pr-2"
                 >
                   Title
                 </label>
@@ -147,7 +160,7 @@ function ViewUpdateSLPost() {
               <div className="mt-2 flex flex-col tablet:flex-row desktop:flex-col items-center">
                 <label
                   htmlFor="date"
-                  className="text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl"
+                  className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl"
                 >
                   Date taken
                 </label>
@@ -155,7 +168,7 @@ function ViewUpdateSLPost() {
                   ref={dateInputRef}
                   mask="99/99/9999"
                   maskChar={null}
-                  className="text-center text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-2 laptop:mx-1"
+                  className="text-center text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 p-2 mt-2 laptop:mx-1"
                   placeholder="mm/dd/yyyy"
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
@@ -166,7 +179,7 @@ function ViewUpdateSLPost() {
               <div className="mt-2 flex flex-col tablet:flex-row desktop:flex-col items-center">
                 <label
                   htmlFor="Image"
-                  className="text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl pr-4"
+                  className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl pr-4"
                 >
                   Image URL
                 </label>
@@ -182,7 +195,7 @@ function ViewUpdateSLPost() {
 
             <div className="mt-2 flex items-center w-full flex-col tablet:flex-row desktop:flex-col">
               <label
-                className="text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl pr-4"
+                className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl pr-4"
                 htmlFor="Description"
               >
                 Description

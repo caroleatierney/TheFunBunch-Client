@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 
+const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
+
 function UpdateSLBlogs() {
   const { postId, itemId } = useParams();
   const navigate = useNavigate();
@@ -101,14 +103,23 @@ function UpdateSLBlogs() {
   const removeBlog = async (e) => {
     e.preventDefault();
 
+    // only admin can delete
+    alert("Enter admin password to delete");
+    let password = prompt("Please enter the admin password");
+
+    if (password == DELETE_PW) {
+      alert("Comment will be deleted");
+    } else {
+      alert("You do not have authority, contact the admin");
+      return;
+    }
+
     try {
-      const response = await fetch(
-        `${baseUrl}/blogArray/${itemId}`, {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${baseUrl}/blogArray/${itemId}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
-         navigate(`/ViewUpdateSLPost/${postId}`);
+        navigate(`/ViewUpdateSLPost/${postId}`);
       } else {
         console.error("Failed to delete the blog item");
       }
