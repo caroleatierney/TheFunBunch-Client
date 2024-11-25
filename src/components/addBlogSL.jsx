@@ -119,7 +119,7 @@ const handleRatingChange = (e) => {
   };
 
   return (
-    <div className=" bg-teal-300 min-h-screen">
+    <div className=" bg-teal-300 w-full">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
@@ -132,7 +132,7 @@ const handleRatingChange = (e) => {
           <div className="flex flex-col items-center ">
             <label
               htmlFor="Blog Name"
-              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
               style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
             >
               Your Name
@@ -148,7 +148,7 @@ const handleRatingChange = (e) => {
 
             <label
               htmlFor="Comments"
-              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
               style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
             >
               Your Comments
@@ -164,7 +164,7 @@ const handleRatingChange = (e) => {
             />
             <label
               htmlFor="Rating"
-              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
               style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
             >
               Rating (1-10)
@@ -181,22 +181,20 @@ const handleRatingChange = (e) => {
               <p className="text-red-500 text-sm mt-1">{ratingError}</p>
             )}
 
-            <div className="grid grid-cols-2 display-flex flex-row justify-content:center align-items:center mt-5 w-full max-w-2xl mx-auto">
-              <NavLink
-                to={`/viewUpdateSLPost/${postId}`}
-                className="w-full flex justify-center"
+            <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+              <Button
+                onClick={() => navigate(`/viewUpdateSLPost/${postId}`)}
+                className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
               >
-                <Button className="w-auto h-auto flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs">
-                  👈 Photo
-                </Button>
-              </NavLink>
+                👈 Back to Photo
+              </Button>
 
               <Button
                 type="submit"
-                className="w-full flex justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
+                className="w-40 h-8 flex items-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
                 disabled={submitted}
               >
-                {submitted ? "Saving comment..." : "💾 Save Comments"}
+                {submitted ? "Saving comment..." : "💾 Save Comment"}
               </Button>
             </div>
             <p className="text-center">

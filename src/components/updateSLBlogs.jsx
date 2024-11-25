@@ -119,24 +119,24 @@ function UpdateSLBlogs() {
 
   // display form
   return (
-    <div className=" bg-teal-300 min-h-screen">
+    <div className=" bg-teal-300 w-full">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
+      <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
         Update a Comment
       </h1>
       <form onSubmit={updateBlog}>
-        <div className="flex flex-col w-1/4 mx-auto text-center">
+        <div className="flex flex-col w-3/4 max-w-3xl mx-auto text-center">
           <label
-            htmlFor="Blog Name"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            htmlFor="Your Name"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
           >
             Your Name
           </label>
           <input
             type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setBlogName(e.target.value)}
             value={blogName}
             required
@@ -144,53 +144,52 @@ function UpdateSLBlogs() {
 
           <label
             htmlFor="Comments"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
           >
             Your Comments
           </label>
           <textarea
             rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setComments(e.target.value)}
             value={comments}
             required
           />
           <label
             htmlFor="Rating"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
           >
             Rating
           </label>
           <input
             type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full max-w-2xl text-teal-500 font-margarine text-center text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setRating(e.target.value)}
             value={rating}
             required
           />
-          <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
-            <Link
-              to="/stLuciaPics"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+          <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+            <Button
+              onClick={() => navigate(`/viewUpdateSLPost/${postId}`)}
+              className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
             >
-              👈 Back to St. Lucia
-            </Link>
+              👈 Back to Photo
+            </Button>
 
-            <input
+            <Button
               type="submit"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              value={submitted ? "Saving updates..." : "💾 Save updates"}
+              className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
               disabled={submitted}
-            />
+            >
+              {submitted ? "Saving note..." : "💾 Save Updates"}
+            </Button>
 
-            <NavLink to="/viewUpdateSLPost/${postId}">
-              <Button
-                onClick={removeBlog}
-                className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              >
-                ❌ Remove Blog
-              </Button>
-            </NavLink>
+            <Button
+              onClick={removeBlog}
+              className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
+            >
+              ❌ Remove Blog
+            </Button>
           </div>
 
           <p className="text-center">
