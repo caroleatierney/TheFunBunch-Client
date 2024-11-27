@@ -34,6 +34,17 @@ to get changes live, on client:
 
 Make sure you are in the right Repo - Client or Server to push changes 
 
+To dump your database for backup you call this command on your terminal
+
+mongodump --uri mongodb+srv://caroleatierney:P3WPLd2e3LzM0f3R@cluster0.6aezan4.mongodb.net/Sandals --db Sandals --out=/users/carole/dev/portfolio_applications/thefunbunch/backupmongodb
+
+You cannot view the dump
+
+To import your backup file to mongodb you can use the following command on your terminal
+
+mongorestore --db database_name path_to_bson_file
+
+
 TO DO:
 
 Make responsive

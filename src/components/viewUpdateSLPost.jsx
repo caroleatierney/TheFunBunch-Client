@@ -141,7 +141,7 @@ function ViewUpdateSLPost() {
 
           <div className="flex flex-col items-center w-3/4 laptop:w-1/3 desktop:mt-0 desktop:w-1/2">
             <div className="flex flex-col items-center ">
-              <div className="flex flex-col tablet:flex-row desktop:flex-col items-center">
+              <div className="flex flex-col items-center">
                 <label
                   htmlFor="title"
                   className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl tablet:pr-2"
@@ -157,7 +157,7 @@ function ViewUpdateSLPost() {
                 />
               </div>
 
-              <div className="mt-2 flex flex-col tablet:flex-row desktop:flex-col items-center">
+              <div className="mt-2 flex flex-col items-center">
                 <label
                   htmlFor="date"
                   className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl"
@@ -176,7 +176,7 @@ function ViewUpdateSLPost() {
                 />
               </div>
 
-              <div className="mt-2 flex flex-col tablet:flex-row desktop:flex-col items-center">
+              <div className="mt-2 flex flex-col items-center">
                 <label
                   htmlFor="Image"
                   className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl pr-4"
@@ -193,7 +193,7 @@ function ViewUpdateSLPost() {
               </div>
             </div>
 
-            <div className="mt-2 flex items-center w-full flex-col tablet:flex-row desktop:flex-col">
+            <div className="mt-2 flex items-center w-full flex-col">
               <label
                 className="text-teal-500 font-margarine text-lg tablet:text-xl laptop:text-2xl pr-4"
                 htmlFor="Description"
@@ -210,17 +210,17 @@ function ViewUpdateSLPost() {
               />
             </div>
 
-            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-x-8 content-center m-5">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 gap-x-8 place-items-center m-5">
               <Button
                 onClick={handleBackToPics}
-                className="flex items-center justify-center w-40 h-8 tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
+                className="flex items-center justify-center w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
               >
                 👈 St. Lucia
               </Button>
 
               <Button
                 type="submit"
-                className="w-40 h-8 tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
+                className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
                 disabled={submitted}
               >
                 {submitted ? "Saving note..." : "💾 Save Updates"}
@@ -228,7 +228,7 @@ function ViewUpdateSLPost() {
 
               <NavLink to={`/addBlogSL/${postId}`}>
                 <Button
-                  className="w-40 h-8 tablet:w-auto desktop:w-40 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
+                  className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center"
                 >
                   Add a Comment
                 </Button>
@@ -237,7 +237,7 @@ function ViewUpdateSLPost() {
               <NavLink to="/stLuciaPics">
                 <Button
                   onClick={removePost}
-                  className="w-40 h-8 tablet:w-auto desktop:w-40 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+                  className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
                 >
                   ❌ Remove
                 </Button>
