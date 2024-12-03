@@ -88,6 +88,7 @@ function ViewUpdateSLPost() {
       console.log(error);
     }
   };
+  
   const removePost = async (e) => {
     e.preventDefault();
 
@@ -118,6 +119,7 @@ function ViewUpdateSLPost() {
       <h1 className="text-center text-teal-500 font-margarine text-3xl laptop:text-6xl py-3">
         St. Lucia
       </h1>
+
       <div className="flex flex-col justify-center min-h-screen bg-teal-300">
         <div className="flex flex-col items-center desktop:flex-row desktop:items-start">
           <div className="justify-center flex m-5 laptop:w-2/3 desktop:w-1/2">
@@ -148,6 +150,7 @@ function ViewUpdateSLPost() {
                 >
                   Title
                 </label>
+
                 <input
                   type="text"
                   className="text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:w-full"
@@ -183,6 +186,7 @@ function ViewUpdateSLPost() {
                 >
                   Image URL
                 </label>
+
                 <input
                   type="text"
                   className="text-center text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-2"

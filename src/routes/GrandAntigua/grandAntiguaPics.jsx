@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Card, Button } from "flowbite-react";
+import { useLocation } from "react-router-dom";
+// import Coral from "../src/assets/coral.jpeg"; ;szhg;h;hb;awht
 
 function GrandAntiguaPics() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs`;
@@ -27,10 +29,16 @@ function GrandAntiguaPics() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Restore scroll position if available
+    if (location.state && location.state.scrollPosition !== undefined) {
+      window.scrollTo(0, location.state.scrollPosition);
+    }
+  }, [location]);
 
   return (
     // Returns all images
-    <div>
+    <div className=" bg-teal-300 min-h-screen flex flex-col items-center justify-center">
       {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
       {isLoading ? (
         <p>Loading...</p>
@@ -41,24 +49,45 @@ function GrandAntiguaPics() {
           <h1 className="text-center text-teal-500 font-margarine text-3xl pt-2">
             Grand Antigua
           </h1>
-          <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2">
+          <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2 pb-2">
             Click on the photo to update it
           </h1>
-          <div className="flex bg-card hover:bg-card-hover rounded-md p-3 m-2 smallestMobile:grid smallestMobile:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
+
+          <div className="flex flex-row justify-center">
+            <NavLink to="/addPicsGrandAntigua">
+              <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+                Add new photo or video
+              </Button>
+            </NavLink>
+          </div>
+
+          <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-4">
             {data.map((item, index) => (
               <Card
                 key={item.id}
-                className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"S
+                className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
+                S
               >
                 <NavLink key={item._id} to={`/ViewUpdateGAPost/${item._id}`}>
                   <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                     {item.title}
                   </h3>
-                  <img
-                    className="max-w-full max-h-full object-contain"
-                    src={item.image}
-                    alt={item.title}
-                  />
+
+                  {item.image.match(/\.(mp4|webm|ogg)$/i) ? (
+                    <video
+                      className="w-full h-64 object-cover"
+                      src={item.image}
+                      controls
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      className="w-full h-64 object-cover"
+                      src={item.image}
+                      alt={item.title}
+                    />
+                  )}
                 </NavLink>
               </Card>
             ))}
@@ -68,7 +97,7 @@ function GrandAntiguaPics() {
       <div className="flex justify-center">
         <NavLink to="/addPicsGrandAntigua">
           <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
-            Add new memory
+            Add new photo or video
           </Button>
         </NavLink>
       </div>
