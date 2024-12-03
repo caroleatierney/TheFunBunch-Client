@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "flowbite-react";
+import { NavLink } from "react-router-dom";
 
 function AddBlogGA() {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const baseUrl = `${ import.meta.env.VITE_SERVER_URL }/api/grandantiguablogs/${postId}/blogArray`;
+  const baseUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/api/grandantiguablogs/${postId}/blogArray`;
   const [newBlogName, setNewBlogName] = useState("");
   const blogDate = getDate();
   const [newComments, setNewComments] = useState("");
@@ -117,81 +120,91 @@ function AddBlogGA() {
   };
 
   return (
-    <div>
+    <div className=" bg-teal-300 w-full">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        St. Lucia
+        Grand Antigua
       </h1>
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
+      <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
         Add a new Comment
       </h1>
 
-      <form onSubmit={addBlogGA}>
-        <div className="flex flex-col w-1/4 mx-auto text-center">
-          <label
-            htmlFor="Blog Name"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Your Name
-          </label>
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewBlogName(e.target.value)}
-            value={newBlogName}
-            required
-          />
-
-          <label
-            htmlFor="Comments"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Your Comments
-          </label>
-          <textarea
-            type="text"
-            rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewComments(e.target.value)}
-            value={newComments}
-            required
-          />
-          <label
-            htmlFor="Rating"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Rating (1-10)
-          </label>
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={handleRatingChange}
-            value={newRating}
-            required
-          />
-          {ratingError && (
-            <p className="text-red-500 text-sm mt-1">{ratingError}</p>
-          )}
-          <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
-            <Link
-              to="/grandAntiguaPics"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+      <form className=" bg-teal-300 flex flex-col" onSubmit={addBlogGA}>
+        <div className="flex flex-col mx-auto text-center w-5/6">
+          <div className="flex flex-col items-center ">
+            <label
+              htmlFor="Blog Name"
+              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
             >
-              👈 back
-            </Link>
-
+              Your Name
+            </label>
             <input
-              type="submit"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              value={submitted ? "Saving comment..." : "💾 Save Comment"}
-              disabled={submitted}
+              type="text"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+              onChange={(e) => setNewBlogName(e.target.value)}
+              value={newBlogName}
+              required
             />
-          </div>
 
-          <p className="text-center">
-            {submitted && (
-              <div className="success-message">Comment has been saved!</div>
+            <label
+              htmlFor="Comments"
+              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            >
+              Your Comments
+            </label>
+            <textarea
+              type="text"
+              rows="5"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              onChange={(e) => setNewComments(e.target.value)}
+              value={newComments}
+              required
+            />
+            <label
+              htmlFor="Rating"
+              className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            >
+              Rating (1-10)
+            </label>
+            <input
+              type="text"
+              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+              onChange={handleRatingChange}
+              value={newRating}
+              required
+            />
+            {ratingError && (
+              <p className="text-red-500 text-sm mt-1">{ratingError}</p>
             )}
-          </p>
+
+            <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+              <Button
+                onClick={() => navigate(`/viewUpdateGAPost/${postId}`)}
+                className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
+              >
+                👈 back to Photo
+              </Button>
+
+              <Button
+                type="submit"
+                className="w-40 h-8 flex items-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
+                value={submitted ? "Saving comment..." : "💾 Save Comment"}
+                disabled={submitted}
+              >
+                {submitted ? "Saving comment..." : "💾 Save Comment"}
+              </Button>
+            </div>
+
+            <p className="text-center">
+              {submitted && (
+                <div className="success-message">Comment has been saved!</div>
+              )}
+            </p>
+          </div>
         </div>
       </form>
     </div>

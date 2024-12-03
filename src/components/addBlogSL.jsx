@@ -118,94 +118,95 @@ const handleRatingChange = (e) => {
     }
   };
 
-  return (
-    <div className=" bg-teal-300 w-full">
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        St. Lucia
-      </h1>
-      <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
-        Add a new Comment
-      </h1>
+return (
+<div className=" bg-teal-300 w-full">
+  <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
+    St. Lucia
+  </h1>
+  <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
+    Add a new Comment
+  </h1>
 
-      <form className=" bg-teal-300 flex flex-col" onSubmit={addBlogSL}>
-        <div className="flex flex-col mx-auto text-center w-5/6">
-          <div className="flex flex-col items-center ">
-            <label
-              htmlFor="Blog Name"
-              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+  <form className=" bg-teal-300 flex flex-col" onSubmit={addBlogSL}>
+    <div className="flex flex-col mx-auto text-center w-5/6">
+      <div className="flex flex-col items-center ">
+        <label
+          htmlFor="Blog Name"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+          >
+            Your Name
+          </label>
+          <input
+            type="text"
+            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            onChange={(e) => setNewBlogName(e.target.value)}
+            value={newBlogName}
+            required
+          />
+
+          <label
+            htmlFor="Comments"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+          >
+            Your Comments
+          </label>
+          <textarea
+            type="text"
+            rows="5"
+            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            onChange={(e) => setNewComments(e.target.value)}
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            value={newComments}
+            required
+          />
+          <label
+            htmlFor="Rating"
+            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+          >
+            Rating (1-10)
+          </label>
+          <input
+            type="text"
+            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            onChange={handleRatingChange}
+            value={newRating}
+            required
+          />
+          {ratingError && (
+            <p className="text-red-500 text-sm mt-1">{ratingError}</p>
+          )}
+
+          <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+            <Button
+              onClick={() => navigate(`/viewUpdateSLPost/${postId}`)}
+              className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
             >
-              Your Name
-            </label>
-            <input
-              type="text"
-              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
-              onChange={(e) => setNewBlogName(e.target.value)}
-              value={newBlogName}
-              required
-            />
+              👈 Back to Photo
+            </Button>
 
-            <label
-              htmlFor="Comments"
-              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
+            <Button
+              type="submit"
+              className="w-40 h-8 flex items-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
+              disabled={submitted}
             >
-              Your Comments
-            </label>
-            <textarea
-              type="text"
-              rows="5"
-              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-              onChange={(e) => setNewComments(e.target.value)}
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
-              value={newComments}
-              required
-            />
-            <label
-              htmlFor="Rating"
-              className="mt-4 text-teal-500 font-margarine text-xl pb-2"
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
-            >
-              Rating (1-10)
-            </label>
-            <input
-              type="text"
-              className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-              style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
-              onChange={handleRatingChange}
-              value={newRating}
-              required
-            />
-            {ratingError && (
-              <p className="text-red-500 text-sm mt-1">{ratingError}</p>
-            )}
-
-            <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
-              <Button
-                onClick={() => navigate(`/viewUpdateSLPost/${postId}`)}
-                className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
-              >
-                👈 Back to Photo
-              </Button>
-
-              <Button
-                type="submit"
-                className="w-40 h-8 flex items-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"
-                disabled={submitted}
-              >
-                {submitted ? "Saving comment..." : "💾 Save Comment"}
-              </Button>
-            </div>
-            <p className="text-center">
-              {submitted && (
-                <div className="success-message">Comment has been saved!</div>
-              )}
-            </p>
+              {submitted ? "Saving comment..." : "💾 Save Comment"}
+            </Button>
           </div>
+          
+          <p className="text-center">
+            {submitted && (
+              <div className="success-message">Comment has been saved!</div>
+            )}
+          </p>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
+  </div>
   );
 }
 
