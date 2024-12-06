@@ -219,7 +219,7 @@ function ViewUpdateGAPost() {
                 onClick={handleBackToPics}
                 className="flex items-center justify-center w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
               >
-                👈 Back to Grand Antigua Memories
+                👈 Grand Antigua
               </Button>
 
               <Button

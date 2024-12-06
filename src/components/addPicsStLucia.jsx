@@ -47,7 +47,7 @@ function AddPicsStLucia() {
 
   // display form
   return (
-    <div>
+    <div className="bg-teal-300">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
         St. Lucia
       </h1>
