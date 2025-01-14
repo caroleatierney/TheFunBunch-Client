@@ -45,22 +45,14 @@ function ViewUpdateSLPost() {
     fetchData();
   }, []);
 
-  // Restore scroll position if available
-  useEffect(() => {
-    if (location.state && location.state.scrollPosition) {
-      console.log("Restoring scroll position:", location.state.scrollPosition);
-      window.scrollTo(0, location.state.scrollPosition);
-    }
-  }, [location]);
-
   const handleBackToPics = () => {
     // Capture current scroll position
     const scrollPosition = window.scrollY;
-    
+
     // Navigate back with scroll position in state
     navigate("/stLuciaPics", { state: { scrollPosition } });
   };
-
+  
   const updatePost = async (e) => {
     e.preventDefault();
 

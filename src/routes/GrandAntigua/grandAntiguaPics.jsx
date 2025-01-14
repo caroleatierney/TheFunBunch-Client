@@ -55,7 +55,7 @@ function GrandAntiguaPics() {
 
           <div className="flex flex-row justify-center">
             <NavLink to="/addPicsGrandAntigua">
-              <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+              <Button className="bg-orange-200 text-teal-500 font-margarine text-lg p-1 rounded hover:bg-emerald-100">
                 Add new photo or video
               </Button>
             </NavLink>

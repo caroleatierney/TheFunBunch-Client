@@ -58,7 +58,7 @@ function ViewUpdateGAPost() {
     const scrollPosition = window.scrollY;
 
     // Navigate back with scroll position in state
-    navigate("/stLuciaPics", { state: { scrollPosition } });
+    navigate("/grandAntiguaPics", { state: { scrollPosition } });
   };
 
   const updatePost = async (e) => {

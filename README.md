@@ -53,3 +53,16 @@ Scroll restoration
 back up
 Delete password
 
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+
+Update the latest versions inpackage.json for:
+flowbite: https://www.npmjs.com/package/flowbite
+flowbite-react: https://www.npmjs.com/package/flowbite-react
+nodemon: https://www.npmjs.com/package/nodemon
+react: https://www.npmjs.com/package/react
+react-dom: https://www.npmjs.com/package/react-dom
+react-input-mask: https://www.npmjs.com/package/react-input-mask
+react-router-dom: https://www.npmjs.com/package/react-router-dom
