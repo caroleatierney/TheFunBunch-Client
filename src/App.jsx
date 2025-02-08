@@ -51,10 +51,10 @@ function App() {
             path="/updateSLBlogs/:postId/:itemId"
             element={<UpdateSLBlogs />}
           />
-          {/* <Route
+          <Route
             path="/viewUpdateGABlogs/:id"
             element={<ViewUpdateGABlogs />}
-          /> */}
+          />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
