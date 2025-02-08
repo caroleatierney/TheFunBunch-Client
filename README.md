@@ -36,7 +36,7 @@ Make sure you are in the right Repo - Client or Server to push changes
 
 To dump your database for backup you call this command on your terminal
 
-mongodump --uri mongodb+srv://caroleatierney:P3WPLd2e3LzM0f3R@cluster0.6aezan4.mongodb.net/Sandals --db Sandals --out=/users/carole/dev/portfolio_applications/thefunbunch/backupmongodb
+mongodump --uri mongodb+srv://caroleatierney:xxxxxxxxxxxxxxxxx/Sandals --db Sandals --out=/users/carole/dev/portfolio_applications/thefunbunch/backupmongodb
 
 You cannot view the dump
 

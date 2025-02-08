@@ -46,12 +46,12 @@ function ViewUpdateGAPost() {
   }, []);
 
   // Restore scroll position if available
-  useEffect(() => {
-    if (location.state && location.state.scrollPosition) {
-      console.log("Restoring scroll position:", location.state.scrollPosition);
-      window.scrollTo(0, location.state.scrollPosition);
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.state && location.state.scrollPosition) {
+  //     console.log("Restoring scroll position:", location.state.scrollPosition);
+  //     window.scrollTo(0, location.state.scrollPosition);
+  //   }
+  // }, [location]);
 
   const handleBackToPics = () => {
     // Capture current scroll position
