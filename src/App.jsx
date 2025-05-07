@@ -52,8 +52,8 @@ function App() {
             element={<UpdateSLBlogs />}
           />
           <Route
-            path="/viewUpdateGABlogs/:id"
-            element={<ViewUpdateGABlogs />}
+            path="/viewUpdateGAPost/:id"
+            element={<ViewUpdateGAPost />}
           />
           <Route path="/about" element={<About />} />
         </Routes>
