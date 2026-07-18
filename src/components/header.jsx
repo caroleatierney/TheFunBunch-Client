@@ -21,7 +21,7 @@ function Header() {
            largeScreen:text-rose-300 largeScreen:text-7xl
            reallyLargeScreen:text-amber-500 reallyLargeScreen:text-7xl
          "
-         >
+          >
             The Fun Bunch
           </h1>
 
@@ -31,7 +31,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg xl:xl`}
                   style={{ minWidth: "100px" }}
-                  className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100 w-full"
+                  className="bg-teal-500 text-white p-1 rounded hover:bg-emerald-100 w-full"
                 >
                   Home
                 </Button>
@@ -42,7 +42,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg`}
                   style={{ minWidth: "110px" }}
-                  className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100 w-full"
+                  className="bg-teal-500 text-white p-1 rounded hover:bg-emerald-100 w-full"
                 >
                   About Us
                 </Button>
@@ -53,7 +53,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg`}
                   style={{ minWidth: "120px" }}
-                  className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100 w-full"
+                  className="bg-teal-500 text-white p-1 rounded hover:bg-emerald-100 w-full"
                 >
                   Saint Lucia
                 </Button>
@@ -64,9 +64,20 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg`}
                   style={{ minWidth: "150px" }}
-                  className="bg-cyan-400 text-white p-1 rounded hover:bg-emerald-100 w-full"
+                  className="bg-teal-500 text-white p-1 rounded hover:bg-emerald-100 w-full"
                 >
                   Grand Antigua
+                </Button>
+              </NavLink>
+            </li>
+            <li className="w-full desktop:w-auto flex justify-center">
+              <NavLink to="/arubaPics" className="w-62">
+                <Button
+                  size={`xs sm:sm md:md lg:lg`}
+                  style={{ minWidth: "150px" }}
+                  className="bg-teal-500 text-white p-1 rounded hover:bg-emerald-100 w-full"
+                >
+                  Aruba
                 </Button>
               </NavLink>
             </li>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import InputMask from "react-input-mask";
+import { InputMask } from "@react-input/mask";
 
 function AddPicsStLucia() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
@@ -11,7 +11,7 @@ function AddPicsStLucia() {
   const [newBlogArray] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
-  
+
   const addPic = async (e) => {
     e.preventDefault();
 
@@ -74,14 +74,19 @@ function AddPicsStLucia() {
           >
             Date taken
           </label>
+
           <InputMask
-            mask="99/99/9999"
-            maskChar={null}
-            className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            // 1. Define the layout and say "_" means a digit (\d)
+            mask="__/__/____"
+            replacement={{ _: /\d/ }}
+            // 2. This replaces maskChar={null} so it doesn't fill with underscores while typing
+            showMask={false}
+            // 3. Your original props work perfectly here
             placeholder="mm/dd/yyyy"
-            onChange={(e) => setNewPicDate(e.target.value)}
             value={newPicDate}
+            onChange={(e) => setNewPicDate(e.target.value)}
             required
+            className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
           />
 
           <label
@@ -140,4 +145,4 @@ function AddPicsStLucia() {
   );
 }
 
-export default AddPicsStLucia
+export default AddPicsStLucia;

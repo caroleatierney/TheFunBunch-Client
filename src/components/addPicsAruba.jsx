@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { InputMask } from "@react-input/mask";
 
-function AddPicsGrandAntigua() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs`;
+function AddPicsAruba() {
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/arubablogs`;
   const [newPicName, setNewPicName] = useState("");
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newPicDate, setNewPicDate] = useState("");
@@ -29,14 +29,14 @@ function AddPicsGrandAntigua() {
       });
 
       if (response.ok) {
-        // set form fields to blank after update
+        // set form fields to blank after adding
         setNewPicName("");
         setNewImageUrl("");
         setNewPicDate("");
         setNewDesc("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/grandAntiguaPics");
+        navigate("/arubaPics");
       } else {
         console.log("Failed to submit data.");
       }
@@ -49,7 +49,7 @@ function AddPicsGrandAntigua() {
   return (
     <div className="bg-teal-300">
       <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Grand Antigua
+        St. Lucia
       </h1>
 
       <form onSubmit={addPic}>
@@ -60,7 +60,6 @@ function AddPicsGrandAntigua() {
           >
             Title of Image
           </label>
-
           <input
             type="text"
             className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
@@ -120,7 +119,7 @@ function AddPicsGrandAntigua() {
 
           <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
             <Link
-              to="/grandAntiguaPics"
+              to="/stLuciaPics"
               className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
             >
               👈 back
@@ -145,4 +144,4 @@ function AddPicsGrandAntigua() {
   );
 }
 
-export default AddPicsGrandAntigua;
+export default AddPicsAruba;

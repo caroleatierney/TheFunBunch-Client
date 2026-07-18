@@ -12,8 +12,8 @@
           largeScreen:text-rose-300
           reallyLargeScreen:text-amber-500
 
-To start Client - npm run dev
-To start Server - nodemon
+To start Client - cd TheFunBunch-Client  npm run dev
+To start Server -  cd TheFunBunch-Server nodemon - npm run dev works!
 
 npm run preview: The vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173 
 

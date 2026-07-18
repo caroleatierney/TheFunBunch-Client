@@ -1,12 +1,13 @@
-// Displays all of the pictures from Grand Antigua
+// Displays all of the pictures from Aruba
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Card, Button } from "flowbite-react";
-import { useLocation } from "react-router-dom";
-// import Coral from "../src/assets/coral.jpeg"; ;szhg;h;hb;awht
 
-function GrandAntiguaPics() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/grandantiguablogs`;
+// import Coral from "../src/assets/coral.jpeg";
+
+function ArubaPics() {
+  // const location = useLocation();
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/arubablogs`;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,13 +30,6 @@ function GrandAntiguaPics() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    // Restore scroll position if available
-    if (location.state && location.state.scrollPosition !== undefined) {
-      window.scrollTo(0, location.state.scrollPosition);
-    }
-  }, [location]);
-
   return (
     // Returns all images
     <div className=" bg-teal-300 min-h-screen flex flex-col items-center justify-center">
@@ -47,14 +41,13 @@ function GrandAntiguaPics() {
       ) : (
         <div>
           <h1 className="text-center text-teal-500 font-margarine text-3xl pt-2">
-            Grand Antigua
+            Aruba
           </h1>
           <h1 className="text-center text-teal-500 font-margarine text-2xl pt-2 pb-2">
-            Click on the photo to update it
+            Click on a photo to update it
           </h1>
-
           <div className="flex flex-row justify-center">
-            <NavLink to="/addPicsGrandAntigua">
+            <NavLink to="/addPicsAruba">
               <Button className="bg-orange-200 text-teal-500 font-margarine text-lg p-1 rounded hover:bg-emerald-100">
                 Add new photo or video
               </Button>
@@ -62,13 +55,16 @@ function GrandAntiguaPics() {
           </div>
 
           <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-4">
-            {data.map((item, index) => (
+            {data.map((item) => (
               <Card
-                key={item.id}
+                key={item._id}
                 className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-orange-200"
-                S
               >
-                <NavLink key={item._id} to={`/ViewUpdateGAPost/${item._id}`}>
+                <NavLink
+                  key={item._id}
+                  to={`/ViewUpdateArubaPost/${item._id}`}
+                  state={{ scrollPosition: window.scrollY }}
+                >
                   <h3 className="text-center text-teal-500 font-margarine text-lg p-2">
                     {item.title}
                   </h3>
@@ -93,7 +89,7 @@ function GrandAntiguaPics() {
             ))}
           </div>
         </div>
-      )}
+      )}{" "}
       <div className="flex flex-row justify-center">
         <NavLink to="/addPicsAruba">
           <Button className="bg-orange-200 text-teal-500 font-margarine text-lg p-1 rounded hover:bg-emerald-100">
@@ -105,4 +101,4 @@ function GrandAntiguaPics() {
   );
 }
 
-export default GrandAntiguaPics;
+export default ArubaPics;

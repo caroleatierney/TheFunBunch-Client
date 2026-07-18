@@ -3,17 +3,15 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 import { InputMask } from "@react-input/mask";
-import DisplaySLBlogs from "./displaySLBlogs";
+import DisplayArubaBlogs from "./displayArubaBlogs";
 
 const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
 
-function ViewUpdateSLPost() {
+function ViewUpdateArubaPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const baseUrl = `${
-    import.meta.env.VITE_SERVER_URL
-  }/api/stluciablogs/${postId}`;
+  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/arubablogs/${postId}`;
   const [picName, setPicName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [date, setDate] = useState("");
@@ -50,7 +48,7 @@ function ViewUpdateSLPost() {
     const scrollPosition = window.scrollY;
 
     // Navigate back with scroll position in state
-    navigate("/stLuciaPics", { state: { scrollPosition } });
+    navigate("/arubaPics", { state: { scrollPosition } });
   };
 
   const updatePost = async (e) => {
@@ -72,7 +70,7 @@ function ViewUpdateSLPost() {
       if (response.ok) {
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate(`/viewUpdateSLPost/${postId}`);
+        navigate(`/viewUpdateArubaPost/${postId}`);
       } else {
         console.log("Failed to submit data.");
       }
@@ -100,7 +98,7 @@ function ViewUpdateSLPost() {
         method: "DELETE",
       });
       if (response.ok) {
-        navigate("/stLuciaPics");
+        navigate("/arubaPics");
       }
     } catch (error) {}
   };
@@ -109,7 +107,7 @@ function ViewUpdateSLPost() {
   return (
     <form className="flex flex-col bg-teal-300" onSubmit={updatePost}>
       <h1 className="text-center text-teal-500 font-margarine text-3xl laptop:text-6xl py-3">
-        St. Lucia
+        Aruba
       </h1>
 
       <div className="flex flex-col justify-center min-h-screen bg-teal-300">
@@ -214,7 +212,7 @@ function ViewUpdateSLPost() {
                 onClick={handleBackToPics}
                 className="flex items-center justify-center w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs"
               >
-                👈 St. Lucia
+                👈 Aruba
               </Button>
 
               <Button
@@ -225,13 +223,13 @@ function ViewUpdateSLPost() {
                 {submitted ? "Saving note..." : "💾 Save Updates"}
               </Button>
 
-              <NavLink to={`/addBlogSL/${postId}`}>
+              <NavLink to={`/addBlogAruba/${postId}`}>
                 <Button className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 rounded hover:bg-emerald-100 text-xs items-center">
                   Add a Comment
                 </Button>
               </NavLink>
 
-              <NavLink to="/stLuciaPics">
+              <NavLink to="/arubaPics">
                 <Button
                   onClick={removePost}
                   className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
@@ -245,7 +243,7 @@ function ViewUpdateSLPost() {
                 <div className="success-message">Note has been updated!</div>
               )}
             </p>
-            <DisplaySLBlogs />
+            <DisplayArubaBlogs />
           </div>
         </div>
       </div>
@@ -253,4 +251,4 @@ function ViewUpdateSLPost() {
   );
 }
 
-export default ViewUpdateSLPost;
+export default ViewUpdateArubaPost;

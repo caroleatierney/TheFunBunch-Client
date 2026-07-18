@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
-import InputMask from "react-input-mask";
+import { InputMask } from "@react-input/mask";
 import DisplayGABlogs from "./displayGABlogs";
 
 const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
@@ -88,19 +88,19 @@ function ViewUpdateGAPost() {
       console.log(error);
     }
   };
-        
+
   const removePost = async (e) => {
     e.preventDefault();
 
     // only admin can delete
-    alert('Enter admin password to delete')
+    alert("Enter admin password to delete");
     let password = prompt("Please enter the admin password");
 
     if (password == DELETE_PW) {
-        alert("Photo content will be deleted");
+      alert("Photo content will be deleted");
     } else {
-        alert("You do not have authority, contact the admin");
-        return
+      alert("You do not have authority, contact the admin");
+      return;
     }
 
     try {
@@ -168,14 +168,17 @@ function ViewUpdateGAPost() {
                   Date taken
                 </label>
                 <InputMask
-                  ref={dateInputRef}
-                  mask="99/99/9999"
-                  maskChar={null}
-                  className="text-center text-teal-500 font-margarine text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 p-2 mt-2 laptop:mx-1"
+                  // 1. Define the layout and say "_" means a digit (\d)
+                  mask="__/__/____"
+                  replacement={{ _: /\d/ }}
+                  // 2. This replaces maskChar={null} so it doesn't fill with underscores while typing
+                  showMask={false}
+                  // 3. Your original props work perfectly here
                   placeholder="mm/dd/yyyy"
-                  onChange={(e) => setDate(e.target.value)}
                   value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   required
+                  className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
                 />
               </div>
 

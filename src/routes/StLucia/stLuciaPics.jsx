@@ -10,7 +10,7 @@ function StLuciaPics() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/stluciablogs`;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);  
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,9 +90,9 @@ function StLuciaPics() {
           </div>
         </div>
       )}
-      <div className="flex justify-center">
+      <div className="flex flex-row justify-center">
         <NavLink to="/addPicsStLucia">
-          <Button className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100">
+          <Button className="bg-orange-200 text-teal-500 font-margarine text-lg p-1 rounded hover:bg-emerald-100">
             Add new photo or video
           </Button>
         </NavLink>
