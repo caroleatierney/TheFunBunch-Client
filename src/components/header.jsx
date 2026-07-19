@@ -22,7 +22,7 @@ function Header() {
            reallyLargeScreen:text-amber-500 reallyLargeScreen:text-7xl
          "
           >
-            The Fun Bunch
+            The Funky Bunch
           </h1>
 
           <ul className="flex flex-col tablet:flex-row items-center justify-around space-y-2 tablet:space-y-0 tablet:space-x-10 pt-4 w-full text-md desktop:text-xl">
